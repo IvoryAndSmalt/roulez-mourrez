@@ -1,25 +1,39 @@
 <?php
 
 // Chargement de Twig
-// require "LoaderTwig.php";
+require "LoaderTwig.php";
 
 // // Chargement du Model
-// require('Models/Home.php');
-$host = 'promo-24.codeur.online';
-$dbname = 'lucasv_roulez-mourrez;charset=utf8';
-$user = 'lucasv';
-$pass = 'vEzn061G+Tzu3A==';
+require('Models/Home.php');
 
-$dbh = new PDO('mysql:host='. $host .';dbname='. $dbname, $user, $pass);
-$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
+$test = testReq("VL seul");
 
-$test = $dbh->query('SELECT * FROM test');
-$test->fetchAll();
-var_dump($test);
+echo "<pre>";
+print_r($test);
+echo "</pre>";
+
+//Charge toutes les options d'intersection
+
+//caracteristiques
+$caracteristiques = getColumns('caracteristiques');
+$colonnes_car = [];
+foreach ($caracteristiques as $key => $value) {
+    array_push($colonnes_car, $value['COLUMN_NAME']);
+}
+
+for ($i=0; $i < count($colonnes_car); $i++) {
+    if($i >10 || $i <6){
+        continue;
+    }
+    else{
+        var_dump(getValues('caracteristiques', $colonnes_car[$i]));
+    }
+}
 
 // On charge le fichier voulus du dossier Views 
-// $template = $twig->load('home.twig');
-
+$template = $twig->load('home.twig');
 
 // On envoi les données a la vue avec Twig
-echo $template->render(array(""));
+echo $template->render(array(
+    "colonnes_car" => $colonnes_car,
+));
