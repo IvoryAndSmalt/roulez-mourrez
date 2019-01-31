@@ -6,8 +6,18 @@ require "LoaderTwig.php";
 // // Chargement du Model
 require('Models/Home.php');
 
-$carac1 = getValues('caracteristiques', 'lumiere');
-var_dump($carac1);
+
+
+
+
+
+$caracteristiques_lumiere = getValues('caracteristiques', 'lumiere');
+var_dump($caracteristiques_lumiere);
+
+
+
+
+
 
 
 // On charge le fichier voulus du dossier Views 
