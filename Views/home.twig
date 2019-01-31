@@ -21,28 +21,16 @@
             </h2>
             <div class="lieuxmenu">
                 
-                {% for i in 7..11 %}
-                    {{colonnes_car[i]}}
+                {% for i in 6..10 %}
+
+                    <label for="{{ colonnes_car[i] }}">{{ colonnes_car[i] }}</label>
+                    <select name="{{ colonnes_car[i] }}" id="{{ colonnes_car[i] }}">
+                    
                 {% endfor %}
 
-                {# {% for colonne in colonnes_car %}
-                    <label for="{{ colonne }}">{{ colonne }}</label>
-                    <select name="{{colonne}}}" id="{{colonne}}}">
-                    <option value="*">Tous</option>
-                    {% for valeur in colonne %}
-                        <option value="{{valeur}}">{{valeur}}</option>
-                    {% endfor %}
-                {% endfor %} #}
                 <label for="categorie_route">Catégorie de Route</label>
                 <select name="cat_r" id="categorie_route">
                 <option value="*">Toutes les routes</option>
-                    {# {% for colonne.lumiere in colonnes_car %}
-                        <option value="{{ colonne.lumiere }}">{{ colonne.lumiere }}</option>
-                    {% endfor %}
-
-                    {% for i in 0..10 %}
-                        * {{ i }}
-                    {% endfor %} #}
                 </select>
             </div>
         </div>
