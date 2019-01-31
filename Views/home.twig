@@ -14,14 +14,49 @@
 
 <div class="formulaire">
     <form action="index.php" method="POST" id="formulaire">
+    {# =============================SECTION LIEUX======================= #}
         <div class="lieux">
             <img src="lieux.png" alt="image lieux">
             <h2 id="lieuxh2">
                 Critères géographiques
             </h2>
             <div class="lieuxmenu">
+            {# =====SELECT LUMIERE===== #}
+            <label for="caracteristiques_lumiere">Lumière : </label>
+            <select name="caracteristiques_lumiere" id="caracteristiques_lumiere">
+                <option value="*">Tous</option>
+                {% for valeur in caracteristiques_lumiere %}
+                    <option value="{{ valeur.lumiere }}">{{ valeur.lumiere }}</option>
+                {% endfor %}
+            </select>
+            {# =====SELECT AGGLOMERATION===== #}
+            <label for="caracteristiques_agglo">Agglomération : </label>
+            <select name="caracteristiques_agglo" id="caracteristiques_agglo">
+                <option value="*">Tous</option>
+                {% for valeur in caracteristiques_agglo %}
+                    <option value="{{ valeur.agglo }}">{{ valeur.agglo }}</option>
+                {% endfor %}
+            </select>
+            {# =====SELECT INTERSECTION===== #}
+            <label for="caracteristiques_intersection">Intersection : </label>
+            <select name="caracteristiques_intersection" id="caracteristiques_intersection">
+                <option value="*">Tous</option>
+                {% for valeur in caracteristiques_intersection %}
+                    <option value="{{ valeur.intersection }}">{{ valeur.intersection }}</option>
+                {% endfor %}
+            </select>
+            {# =====SELECT ATMOSPHERE===== #}
+            <label for="caracteristiques_atm">Atmosphère : </label>
+            <select name="caracteristiques_atm" id="caracteristiques_atm">
+                <option value="*">Tous</option>
+                {% for valeur in caracteristiques_atm %}
+                    <option value="{{ valeur.atm }}">{{ valeur.atm }}</option>
+                {% endfor %}
+            </select>
+
             
-            
+
+        </div>
 
         <input type="submit" value="envoyer">
     </form>
