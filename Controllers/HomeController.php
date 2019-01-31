@@ -18,20 +18,20 @@ $caracteristiques_lumiere = getValues('caracteristiques', 'lumiere');
 
 // ======================================== SECTION USAGER ========================================
 
-    $usages_categorie_u = getValues('usagers', 'categorie_u');
-    // var_dump($usages_categorie_u);
+    $usagers_categorie_u = getValues('usagers', 'categorie_u');
+    // var_dump($usagers_categorie_u);
 
-    $usages_gravite = getValues('usagers', 'gravite');
-    // var_dump($usages_gravite);
+    $usagers_gravite = getValues('usagers', 'gravite');
+    // var_dump($usagers_gravite);
 
-    $usages_sexe = getValues('usagers', 'sexe');
-    // var_dump($usages_sexe);
+    $usagers_sexe = getValues('usagers', 'sexe');
+    // var_dump($usagers_sexe);
 
-    $usages_trajet = getValues('usagers', 'trajet');
-    // var_dump($usages_trajet);
+    $usagers_trajet = getValues('usagers', 'trajet');
+    // var_dump($usagers_trajet);
 
-    $usages_equipement_secu = getValues('usagers', 'equipement_secu');
-    // var_dump($usages_equipement_secu);
+    $usagers_equipement_secu = getValues('usagers', 'equipement_secu');
+    // var_dump($usagers_equipement_secu);
 
 
 
@@ -45,5 +45,9 @@ $template = $twig->load('home.twig');
 
 // On envoi les données a la vue avec Twig
 echo $template->render(array(
-    "usages_categorie_u" => $usages_categorie_u
+    "usagers_categorie_u" => $usagers_categorie_u,
+    "usagers_gravite" => $usagers_gravite,
+    "usagers_sexe" => $usagers_sexe,
+    "usagers_trajet" => $usagers_trajet,
+    "usagers_equipement_secu" => $usagers_equipement_secu
 ));
