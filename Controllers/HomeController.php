@@ -39,6 +39,15 @@ require('Models/Home.php');
     $lieux_infra_r = getValues('lieux', 'infra_r');
     $lieux_situation_acc = getValues('lieux', 'situation_acc');
 
+
+
+
+
+
+echo "<pre>";
+    $test = getRes("Voie ferrée");
+    var_dump($test);
+echo "</pre>";
 // On charge le fichier voulus du dossier Views 
 $template = $twig->load('home.twig');
 
@@ -51,7 +60,6 @@ echo $template->render(array(
     "caracteristiques_collision" => $caracteristiques_collision,
 
     "lieux_categorie_r" => $lieux_categorie_r,
-    "lieux_voie" => $lieux_voie,
     "lieux_regime_circ" => $lieux_regime_circ,
     "lieux_nb_voies" => $lieux_nb_voies,
     "lieux_declivite" => $lieux_declivite,
