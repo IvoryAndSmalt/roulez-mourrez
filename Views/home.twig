@@ -21,14 +21,6 @@
                 Critères géographiques
             </h2>
             <div class="lieuxmenu">
-            {# =====SELECT LUMIERE===== #}
-            <label for="caracteristiques_lumiere">Lumière : </label>
-            <select name="caracteristiques_lumiere" id="caracteristiques_lumiere">
-                <option value="*">Tous</option>
-                {% for valeur in caracteristiques_lumiere %}
-                    <option value="{{ valeur.lumiere }}">{{ valeur.lumiere }}</option>
-                {% endfor %}
-            </select>
             {# =====SELECT AGGLOMERATION===== #}
             <label for="caracteristiques_agglo">Agglomération : </label>
             <select name="caracteristiques_agglo" id="caracteristiques_agglo">
@@ -53,7 +45,14 @@
                     <option value="{{ valeur.atm }}">{{ valeur.atm }}</option>
                 {% endfor %}
             </select>
-
+            {# =====SELECT LUMIERE===== #}
+            <label for="caracteristiques_lumiere">Lumière : </label>
+            <select name="caracteristiques_lumiere" id="caracteristiques_lumiere">
+                <option value="*">Tous</option>
+                {% for valeur in caracteristiques_lumiere %}
+                    <option value="{{ valeur.lumiere }}">{{ valeur.lumiere }}</option>
+                {% endfor %}
+            </select>
     {# =============================SECTION USAGERS======================= #}
         <div class="usagers">
             <img src="usagers.png" alt="image usagers">
@@ -61,20 +60,20 @@
                 Critères géographiques
             </h2>
             <div class="usagersmenu">
-            {# =====SELECT CATEGORIE_U===== #}
-            <label for="usagers_categorie_u">Categorie Usagers : </label>
-            <select name="usagers_categorie_u" id="usagers_categorie_u">
-                <option value="*">Tous</option>
-                {% for valeur in usagers_categorie_u %}
-                    <option value="{{ valeur.categorie_u }}">{{ valeur.categorie_u }}</option>
-                {% endfor %}
-            </select>
             {# =====SELECT USAGES_GRAVITE===== #}
             <label for="usagers_gravite">Gravite : </label>
             <select name="usagers_gravite" id="usagers_gravite">
                 <option value="*">Tous</option>
                 {% for valeur in usagers_gravite %}
                     <option value="{{ valeur.gravite }}">{{ valeur.gravite }}</option>
+                {% endfor %}
+            </select>
+            {# =====SELECT CATEGORIE_U===== #}
+            <label for="usagers_categorie_u">Categorie Usagers : </label>
+            <select name="usagers_categorie_u" id="usagers_categorie_u">
+                <option value="*">Tous</option>
+                {% for valeur in usagers_categorie_u %}
+                    <option value="{{ valeur.categorie_u }}">{{ valeur.categorie_u }}</option>
                 {% endfor %}
             </select>
             {# =====SELECT SEXE===== #}
