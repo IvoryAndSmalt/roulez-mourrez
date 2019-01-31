@@ -45,6 +45,7 @@ function getColumns($table){
     $colonnes->execute([$table]);
 
     return $colonnes->fetchAll();
+
 }
 
 function getValues($table, $colonne){

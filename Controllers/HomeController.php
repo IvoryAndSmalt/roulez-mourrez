@@ -28,7 +28,7 @@ for ($i=0; $i < count($colonnes_car); $i++) {
         continue;
     }
     else{
-        var_dump(getValues('caracteristiques', $colonnes_car[$i]));
+        // var_dump(getValues('caracteristiques', $colonnes_car[$i]));
     }
 }
 
@@ -44,7 +44,7 @@ for ($i=0; $i < count($colonnes_lieux); $i++) {
         continue;
     }
     else{
-        var_dump(getValues('lieux', $colonnes_lieux[$i]));
+        // var_dump(getValues('lieux', $colonnes_lieux[$i]));
     }
 }
 
@@ -60,7 +60,7 @@ for ($i=0; $i < count($colonnes_usagers); $i++) {
         continue;
     }
     else{
-        var_dump(getValues('usagers', $colonnes_usagers[$i]));
+        // var_dump(getValues('usagers', $colonnes_usagers[$i]));
     }
 }
 
@@ -76,7 +76,7 @@ for ($i=0; $i < count($colonnes_vehicules); $i++) {
         continue;
     }
     else{
-        var_dump(getValues('vehicules', $colonnes_vehicules[$i]));
+        // var_dump(getValues('vehicules', $colonnes_vehicules[$i]));
     }
 }
 ?></pre><?php
