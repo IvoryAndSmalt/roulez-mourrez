@@ -41,15 +41,25 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
 a{
 	text-decoration: none;
 	outline:none
 }
-
 input, textarea{
 	box-sizing: border-box;
 }
 /***************************************/
 /***************END OF RESET************/
 /***************************************/
+
+#formulaire{
+	display: flex;
+	width: 80%;
+	margin: auto;
+	justify-content: space-around;
+	padding: 10px;
+}
+
+*{
+	background: rgba(0,0,0,0.1);
+}
