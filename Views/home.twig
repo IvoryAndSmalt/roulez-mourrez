@@ -54,9 +54,7 @@
                 {% endfor %}
             </select>
 
-
-
-            {# =====SELECT CATEGORIE ROUTE===== #}
+{# ===================================SELECT CATEGORIE ROUTE=================================== #}
             <label for="lieux_categorie_r">Atmosphère : </label>
             <select name="lieux_categorie_r" id="lieux_categorie_r">
                 <option value="*">Tous</option>
@@ -129,16 +127,54 @@
                 {% endfor %}
             </select>
 
-            {# =====SELECT SITUATION ACCIDENT===== #}
-            <label for="lieux_situation_acc">Atmosphère : </label>
-            <select name="lieux_situation_acc" id="lieux_situation_acc">
+    {# =============================SECTION USAGERS======================= #}
+        <div class="usagers">
+            <img src="usagers.png" alt="image usagers">
+            <h2 id="usagersh2">
+                Critères géographiques
+            </h2>
+            <div class="usagersmenu">
+            {# =====SELECT CATEGORIE_U===== #}
+            <label for="usagers_categorie_u">Categorie Usagers : </label>
+            <select name="usagers_categorie_u" id="usagers_categorie_u">
                 <option value="*">Tous</option>
-                {% for valeur in lieux_situation_acc %}
-                    <option value="{{ valeur.situation_acc }}">{{ valeur.situation_acc }}</option>
+                {% for valeur in usagers_categorie_u %}
+                    <option value="{{ valeur.categorie_u }}">{{ valeur.categorie_u }}</option>
+                {% endfor %}
+            </select>
+            {# =====SELECT USAGES_GRAVITE===== #}
+            <label for="usagers_gravite">Gravite : </label>
+            <select name="usagers_gravite" id="usagers_gravite">
+                <option value="*">Tous</option>
+                {% for valeur in usagers_gravite %}
+                    <option value="{{ valeur.gravite }}">{{ valeur.gravite }}</option>
+                {% endfor %}
+            </select>
+            {# =====SELECT SEXE===== #}
+            <label for="usagers_sexe">Sexe : </label>
+            <select name="usagers_sexe" id="usagers_sexe">
+                <option value="*">Tous</option>
+                {% for valeur in usagers_sexe %}
+                    <option value="{{ valeur.sexe }}">{{ valeur.sexe }}</option>
+                {% endfor %}
+            </select>
+            {# =====SELECT TRAJET===== #}
+            <label for="usagers_trajet">Trajet : </label>
+            <select name="usagers_trajet" id="usagers_trajet">
+                <option value="*">Tous</option>
+                {% for valeur in usagers_trajet %}
+                    <option value="{{ valeur.trajet }}">{{ valeur.trajet }}</option>
+                {% endfor %}
+            </select>
+            {# =====SELECT EQUIPEMENT_SECU===== #}
+            <label for="usagers_equipement_secu">Equipement de sécurité : </label>
+            <select name="usagers_equipement_secu" id="usagers_equipement_secu">
+                <option value="*">Tous</option>
+                {% for valeur in usagers_equipement_secu %}
+                    <option value="{{ valeur.equipement_secu }}">{{ valeur.equipement_secu }}</option>
                 {% endfor %}
             </select>
         </div>
-
         <input type="submit" value="envoyer">
     </form>
 </div>
