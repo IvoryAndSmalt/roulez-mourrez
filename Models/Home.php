@@ -37,7 +37,7 @@ function getValues($table, $colonne){
 //     return $valeur;
 // }
 
-function getRes($arg1, $arg2){
+function getRes($arg1 = "*", $arg2 = "*"){
 global $dbh;
 
         $valeur = $dbh->prepare('SELECT count(*) FROM caracteristiques, lieux, usagers, vehicules WHERE
@@ -47,7 +47,8 @@ global $dbh;
         lieux.numa = usagers.numa AND 
         lieux.numa = vehicules.numa AND 
         usagers.numa = vehicules.numa AND
-        lieux.infra_r = ?
+        lieux.infra_r = ? AND
+        caracteristiques.lumiere = ?
     ;');
     $valeur->execute([$arg1, $arg2]);
 
