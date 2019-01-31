@@ -39,13 +39,8 @@ require('Models/Home.php');
     $lieux_infra_r = getValues('lieux', 'infra_r');
     $lieux_situation_acc = getValues('lieux', 'situation_acc');
 
-
-
-
-
-
 echo "<pre>";
-    $test = getRes("Voie ferrée", "Plein jour");
+    $test = getRes("%", "Plein jour");
     var_dump($test);
 echo "</pre>";
 // On charge le fichier voulus du dossier Views 
