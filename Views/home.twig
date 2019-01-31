@@ -54,8 +54,89 @@
                 {% endfor %}
             </select>
 
-            
 
+
+            {# =====SELECT CATEGORIE ROUTE===== #}
+            <label for="lieux_categorie_r">Atmosphère : </label>
+            <select name="lieux_categorie_r" id="lieux_categorie_r">
+                <option value="*">Tous</option>
+                {% for valeur in lieux_categorie_r %}
+                    <option value="{{ valeur.categorie_r }}">{{ valeur.categorie_r }}</option>
+                {% endfor %}
+            </select>
+
+            {# =====SELECT VOIE===== #}
+            <label for="lieux_voie">Atmosphère : </label>
+            <select name="lieux_voie" id="lieux_voie">
+                <option value="*">Tous</option>
+                {% for valeur in lieux_voie %}
+                    <option value="{{ valeur.voie }}">{{ valeur.voie }}</option>
+                {% endfor %}
+            </select>
+
+            {# =====SELECT REGIME CIRCULATION ===== #}
+            <label for="lieux_regime_circ">Atmosphère : </label>
+            <select name="lieux_regime_circ" id="lieux_regime_circ">
+                <option value="*">Tous</option>
+                {% for valeur in lieux_regime_circ %}
+                    <option value="{{ valeur.regime_circ }}">{{ valeur.regime_circ }}</option>
+                {% endfor %}
+            </select>
+
+            {# =====SELECT NOMBRE VOIES===== #}
+            <label for="lieux_nb_voies">Atmosphère : </label>
+            <select name="lieux_nb_voies" id="lieux_nb_voies">
+                <option value="*">Tous</option>
+                {% for valeur in lieux_nb_voies %}
+                    <option value="{{ valeur.nb_voies }}">{{ valeur.nb_voies }}</option>
+                {% endfor %}
+            </select>
+
+            {# =====SELECT DECLIVITE===== #}
+            <label for="lieux_declivite">Atmosphère : </label>
+            <select name="lieux_declivite" id="lieux_declivite">
+                <option value="*">Tous</option>
+                {% for valeur in lieux_declivite %}
+                    <option value="{{ valeur.declivite }}">{{ valeur.declivite }}</option>
+                {% endfor %}
+            </select>
+
+
+            {# =====SELECT COURBE ROUTE===== #}
+            <label for="lieux_courbe_r">Atmosphère : </label>
+            <select name="lieux_courbe_r" id="lieux_courbe_r">
+                <option value="*">Tous</option>
+                {% for valeur in lieux_courbe_r %}
+                    <option value="{{ valeur.courbe_r }}">{{ valeur.courbe_r }}</option>
+                {% endfor %}
+            </select>
+
+            {# =====SELECT ETAT ROUTE===== #}
+            <label for="lieux_etat_r">Atmosphère : </label>
+            <select name="lieux_etat_r" id="lieux_etat_r">
+                <option value="*">Tous</option>
+                {% for valeur in lieux_etat_r %}
+                    <option value="{{ valeur.etat_r }}">{{ valeur.etat_r }}</option>
+                {% endfor %}
+            </select>
+
+            {# =====SELECT INFRASTRUCTURE ROUTE===== #}
+            <label for="lieux_infra_r">Atmosphère : </label>
+            <select name="lieux_infra_r" id="lieux_infra_r">
+                <option value="*">Tous</option>
+                {% for valeur in lieux_infra_r %}
+                    <option value="{{ valeur.infra_r }}">{{ valeur.infra_r }}</option>
+                {% endfor %}
+            </select>
+
+            {# =====SELECT SITUATION ACCIDENT===== #}
+            <label for="lieux_situation_acc">Atmosphère : </label>
+            <select name="lieux_situation_acc" id="lieux_situation_acc">
+                <option value="*">Tous</option>
+                {% for valeur in lieux_situation_acc %}
+                    <option value="{{ valeur.situation_acc }}">{{ valeur.situation_acc }}</option>
+                {% endfor %}
+            </select>
         </div>
 
         <input type="submit" value="envoyer">
