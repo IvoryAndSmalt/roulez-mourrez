@@ -33,9 +33,13 @@ function retourne2($choix1, $choix2){
     return $table = [$min, $max];
 }
 
-// function retourne3($table){
-//     $one_col = $dbh->prepare('SELECT $table.choix2.value, $choix2 FROM $table1, $table2 WHERE numa <= $table[0] AND numa >= $table[1]');
-// }
+function retourne3($table){
+    $one_col = $dbh->prepare('SELECT $table.choix2.value, $choix2 FROM $table1, $table2 WHERE numa <= $table[0] AND numa >= $table[1]');
+}
+
+
+
+
 
 function getColumns($table){
     global $dbh;
