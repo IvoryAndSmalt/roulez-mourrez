@@ -17,9 +17,14 @@ $loader = new Twig_Loader_Filesystem('Views');
 $twig = new Twig_Environment($loader, [
 
     // N'active pas le cache (mieux pour le développement)
-    'cache'=>false
+    'cache'=>false,
+    'debug' => true
+
+
 
     // Active une mémoire cache dans le dossier actuel et il sera nommé tmp
     // 'cache'=> __DIR__ . '/tmp'
 
 ]);
+
+$twig->addExtension(new Twig_Extension_Debug());
