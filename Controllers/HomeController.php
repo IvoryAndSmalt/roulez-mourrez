@@ -45,7 +45,7 @@ require('Models/Home.php');
 
 
 echo "<pre>";
-    $test = getRes("Voie ferrée");
+    $test = getRes("Voie ferrée", "Plein jour");
     var_dump($test);
 echo "</pre>";
 // On charge le fichier voulus du dossier Views 
