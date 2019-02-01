@@ -12,10 +12,37 @@ if(isset($_POST) && !empty($_POST)){
     foreach ($_POST as $key => $value) {
         if($value !== ""){
             $arg = "arg".$i;
-            $$arg = $key. ">". $value."<br>";
+            $$arg = $key. "?". $value;
             $i++;
         }
     }
+
+    // appeler la fonction avec les arguments donnés
+    if(isset($arg5)){
+        $test = getRes($arg1, $arg2, $arg3, $arg4, $arg5);
+        echo "il y a ".$test[0]['total']." résultats.";
+    }
+    elseif (isset($arg4)) {
+        $test = getRes($arg1, $arg2, $arg3, $arg4);
+        echo "il y a ".$test[0]['total']." résultats.";
+    }
+    elseif (isset($arg3)) {
+        $test = getRes($arg1, $arg2, $arg3);
+        echo "il y a ".$test[0]['total']." résultats.";
+    }
+    elseif (isset($arg2)) {
+        $test = getRes($arg1, $arg2);
+        echo "il y a ".$test[0]['total']." résultats.";
+    }
+    elseif (isset($arg1)){
+        $test = getRes($arg1);
+        echo "il y a ".$test[0]['total']." résultats.";
+    }
+    else{
+        $test = getRes();
+        echo "il y a ".$test[0]['total']." résultats.";
+    }
+    
 }
 
 //ajouter l'appel de la fonction en fonction du nombre d'arguments renseignés
@@ -86,5 +113,5 @@ echo $template->render(array(
     "vehicules_point_choc" => $vehicules_point_choc,
     "vehicules_manoeuvre" => $vehicules_manoeuvre,
 
-    "resultat" => $resultat
+    // "resultat" => $resultat
 ));
