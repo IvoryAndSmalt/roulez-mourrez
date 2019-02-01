@@ -53,11 +53,74 @@ input, textarea{
 /***************************************/
 
 #formulaire{
-	display: flex;
-	width: 80%;
+	width: 100%;
 	margin: auto;
 	justify-content: space-around;
 	padding: 10px;
+}
+
+
+#header{
+	width: 100%;
+	position: relative;
+}
+
+.lieux, .usagers, .vehicules{
+	width: 100%;
+	height: 200px;
+	position: absolute;
+}
+
+.lieux a{
+	display: block;
+	width: 100%;
+}
+
+.usagers a{
+	display: block;
+	width: 100%;
+} 
+
+.vehicules a{
+	display: block;
+	width: 100%;
+}
+
+#lieuxmenu, #usagersmenu{
+	display: none;
+}
+
+.smenu{
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.col1, .col2{
+	width: 40%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+}
+
+.col1 label, .col2 label{
+	display: flex;
+	align-self: center;
+	margin: 8px 0;
+	width: 40%;
+	height: auto;
+}
+.col1 select, .col2 select{
+	width: 60%;
+}
+
+label{
+	text-align: left;
+}
+
+.select{
+	text-align: center;
 }
 
 *{

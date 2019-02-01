@@ -6,10 +6,51 @@ require "LoaderTwig.php";
 // // Chargement du Model
 require('Models/Home.php');
 
+
+if(isset($_POST) && !empty($_POST)){
+    $i = 1;
+    foreach ($_POST as $key => $value) {
+        if($value !== ""){
+            $arg = "arg".$i;
+            $$arg = $key. "@". $value;
+            $i++;
+        }
+    }
+
+    // appeler la fonction avec les arguments donnés
+    if(isset($arg5)){
+        $test = getRes($arg1, $arg2, $arg3, $arg4, $arg5);
+        echo "il y a ".$test[0]['total']." résultats.";
+    }
+    elseif (isset($arg4)) {
+        $test = getRes($arg1, $arg2, $arg3, $arg4);
+        echo "il y a ".$test[0]['total']." résultats.";
+    }
+    elseif (isset($arg3)) {
+        $test = getRes($arg1, $arg2, $arg3);
+        echo "il y a ".$test[0]['total']." résultats.";
+    }
+    elseif (isset($arg2)) {
+        $test = getRes($arg1, $arg2);
+        echo "il y a ".$test[0]['total']." résultats.";
+    }
+    elseif (isset($arg1)){
+        $test = getRes($arg1);
+        echo "il y a ".$test[0]['total']." résultats.";
+    }
+    else{
+        $test = getRes();
+        echo "il y a ".$test[0]['total']." résultats.";
+    }
+    
+}
+
+//ajouter l'appel de la fonction en fonction du nombre d'arguments renseignés
+
 // =============================== SECTION CARACTERISTIQUES===========================
     $caracteristiques_lumiere = getValues('caracteristiques', 'lumiere');
     $caracteristiques_agglo = getValues('caracteristiques', 'agglo');
-    $caracteristiques_intersection = getValues('caracteristiques', 'intersection');
+    $caracteristiques_intersection = getValues('caracteristiques','intersection');
     $caracteristiques_atm = getValues('caracteristiques', 'atm');
     $caracteristiques_collision = getValues('caracteristiques', 'collision');
 
@@ -39,15 +80,6 @@ require('Models/Home.php');
     $lieux_infra_r = getValues('lieux', 'infra_r');
     $lieux_situation_acc = getValues('lieux', 'situation_acc');
 
-
-
-
-
-
-echo "<pre>";
-    $test = getRes("Voie ferrée", "Plein jour");
-    var_dump($test);
-echo "</pre>";
 // On charge le fichier voulus du dossier Views 
 $template = $twig->load('home.twig');
 
@@ -80,4 +112,6 @@ echo $template->render(array(
     "vehicules_obstacle_mobile" => $vehicules_obstacle_mobile,
     "vehicules_point_choc" => $vehicules_point_choc,
     "vehicules_manoeuvre" => $vehicules_manoeuvre,
+
+    // "resultat" => $resultat
 ));
