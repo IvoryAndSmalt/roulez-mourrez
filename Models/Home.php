@@ -17,28 +17,28 @@ function getValues($table, $colonne){
     return $valeur;
 }
 
-function getRes($arg1 = "vehicules_categorie_v?%", $arg2 = "vehicules_categorie_v?%", $arg3 = "vehicules_categorie_v?%", $arg4 = "vehicules_categorie_v?%", $arg5 = "vehicules_categorie_v?%"){
+function getRes($arg1 = "vehicules_categorie_v@%", $arg2 = "vehicules_categorie_v@%", $arg3 = "vehicules_categorie_v@%", $arg4 = "vehicules_categorie_v@%", $arg5 = "vehicules_categorie_v@%"){
     global $dbh;
 
     $table1 = stristr($arg1, "_", true);
-    $colonne1 = substr_replace(stristr(stristr($arg1, "_"), "?", true), "",0,1);
-    $valeur1 = substr_replace(stristr($arg1, '?'), '', 0, 1);
+    $colonne1 = substr_replace(stristr(stristr($arg1, "_"), "@", true), "",0,1);
+    $valeur1 = substr_replace(stristr($arg1, '@'), '', 0, 1);
 
     $table2 = stristr($arg2, "_", true);
-    $colonne2 = substr_replace(stristr(stristr($arg2, "_"), "?", true), "",0,1);
-    $valeur2 = str_replace("?", "", stristr(stristr($arg2, "_"), "?"));
+    $colonne2 = substr_replace(stristr(stristr($arg2, "_"), "@", true), "",0,1);
+    $valeur2 = str_replace("@", "", stristr(stristr($arg2, "_"), "@"));
 
     $table3 = stristr($arg3, "_", true);
-    $colonne3 = substr_replace(stristr(stristr($arg3, "_"), "?", true), "",0,1);
-    $valeur3 = str_replace("?", "", stristr(stristr($arg3, "_"), "?"));
+    $colonne3 = substr_replace(stristr(stristr($arg3, "_"), "@", true), "",0,1);
+    $valeur3 = str_replace("@", "", stristr(stristr($arg3, "_"), "@"));
 
     $table4 = stristr($arg4, "_", true);
-    $colonne4 = substr_replace(stristr(stristr($arg4, "_"), "?", true), "",0,1);
-    $valeur4 = str_replace("?", "", stristr(stristr($arg4, "_"), "?"));
+    $colonne4 = substr_replace(stristr(stristr($arg4, "_"), "@", true), "",0,1);
+    $valeur4 = str_replace("@", "", stristr(stristr($arg4, "_"), "@"));
 
     $table5 = stristr($arg5, "_", true);
-    $colonne5 = substr_replace(stristr(stristr($arg5, "_"), "?", true), "",0,1);
-    $valeur5 = str_replace("?", "", stristr(stristr($arg5, "_"), "?"));
+    $colonne5 = substr_replace(stristr(stristr($arg5, "_"), "@", true), "",0,1);
+    $valeur5 = str_replace("@", "", stristr(stristr($arg5, "_"), "@"));
 
     $sql = 'SELECT count(*) as total FROM 
     caracteristiques, lieux, usagers, vehicules WHERE

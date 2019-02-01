@@ -12,7 +12,7 @@ if(isset($_POST) && !empty($_POST)){
     foreach ($_POST as $key => $value) {
         if($value !== ""){
             $arg = "arg".$i;
-            $$arg = $key. "?". $value;
+            $$arg = $key. "@". $value;
             $i++;
         }
     }
