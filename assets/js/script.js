@@ -49,3 +49,31 @@ links.forEach(function (link) {
 map.addEventListener('mouseleave', function () {
     activeArea();
 })
+
+// Couleurs en fonction du % obtenu 
+
+var resultatObtenu = document.getElementsByClassName("resultatObtenu");
+var boutonEnvoyer = document.getElementsByClassName("boutonEnvoyer");
+var total=0;
+
+
+boutonEnvoyer.addEventListener("click", function() { rempliCarte(); });
+
+
+function rempliCarte() { 
+    if (resultatObtenu !=0 && resultatObtenu != null) {
+        for (var path of paths) {
+            total += resultatObtenu.value/100; 
+            
+            if (resultatObtenu < 30){
+                path.style = "yellow";
+            }
+            if (30 < resultatObtenu && resultatObtenu > 60){
+                path.style = "red";
+            }
+            if (resultatObtenu > 60){
+                path.style= "black";
+            }
+        }
+    }
+}

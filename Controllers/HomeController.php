@@ -6,10 +6,24 @@ require "LoaderTwig.php";
 // // Chargement du Model
 require('Models/Home.php');
 
+
+if(isset($_POST) && !empty($_POST)){
+    $i = 1;
+    foreach ($_POST as $key => $value) {
+        if($value !== ""){
+            $arg = "arg".$i;
+            $$arg = $key. ">". $value."<br>"; 
+            $i++;
+        }
+    }
+}
+
+//ajouter l'appel de la fonction en fonction du nombre d'arguments renseignés
+
 // =============================== SECTION CARACTERISTIQUES===========================
     $caracteristiques_lumiere = getValues('caracteristiques', 'lumiere');
     $caracteristiques_agglo = getValues('caracteristiques', 'agglo');
-    $caracteristiques_intersection = getValues('caracteristiques', 'intersection');
+    $caracteristiques_intersection = getValues('caracteristiques','intersection');
     $caracteristiques_atm = getValues('caracteristiques', 'atm');
     $caracteristiques_collision = getValues('caracteristiques', 'collision');
 
@@ -39,17 +53,9 @@ require('Models/Home.php');
     $lieux_infra_r = getValues('lieux', 'infra_r');
     $lieux_situation_acc = getValues('lieux', 'situation_acc');
 
-
-
-echo "<pre>";
-    $test = getRes("%", "Plein jour");
-    var_dump($test);
-echo "</pre>";
-
-
-// ==================== SECTION DEPARTEMENTS ===============================
-
-$caracteristiques_departement = getDepartements('caracteristiques', 'departement');
+// ==================== SECTION RESULTAT & DEPARTEMENTS ==============================
+    $resultat =  getRes("total");
+    $caracteristiques_departement = getValues('caracteristiques', 'departement');
 
 
 // On charge le fichier voulus du dossier Views 
@@ -85,5 +91,6 @@ echo $template->render(array(
     "vehicules_point_choc" => $vehicules_point_choc,
     "vehicules_manoeuvre" => $vehicules_manoeuvre,
 
+    "resultat" => $resultat,
     "caracteristiques_departement" => $caracteristiques_departement,
 ));
