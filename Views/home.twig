@@ -58,15 +58,6 @@
                     {% endfor %}
                 </select>
 
-                {# =====SELECT VOIE===== #}
-                <label for="lieux_voie">Numéro de route : </label>
-                <select name="lieux_voie" id="lieux_voie">
-                    <option value="*">Tous</option>
-                    {% for valeur in lieux_voie %}
-                        <option value="{{ valeur.voie }}">{{ valeur.voie }}</option>
-                    {% endfor %}
-                </select>
-
                 {# =====SELECT INFRASTRUCTURE ROUTE===== #}
                 <label for="lieux_infra_r">Infrastructure de la route : </label>
                 <select name="lieux_infra_r" id="lieux_infra_r">
@@ -197,12 +188,11 @@
             </div>
         </div>
 
-
     {# =========================SECTION USAGERS=================== #}
         <div class="usagers">
             <img src="usagers.png" alt="image usagers">
             <h2 id="usagersh2">
-                Critères géographiques
+                Critères usagers
             </h2>
             <div class="usagersmenu">
 
@@ -266,3 +256,4 @@
 </div>
 
 {% endblock main %}
+

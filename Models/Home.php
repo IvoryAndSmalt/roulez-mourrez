@@ -16,3 +16,47 @@ function getValues($table, $colonne){
 
     return $valeur;
 }
+
+// function getResultat($arg1 = "*", $arg2 = "*", $arg3 = "*", $arg4 = "*", $arg5 = "*"){
+//     global $dbh;
+
+//     $valeur = $dbh->prepare('SELECT *, count(*) FROM caracteristiques, lieux, usagers, vehicules WHERE
+//     caracteristiques.numa = lieux.numa AND 
+//     caracteristiques.numa = usagers.numa AND 
+//     caracteristiques.numa = vehicules.numa AND 
+//     lieux.numa = usagers.numa AND 
+//     lieux.numa = vehicules.numa AND 
+//     usagers.numa = vehicules.numa AND
+//     '.$arg1.' = ?
+
+//     ;');
+//     $valeur->execute([$arg1, $arg2, $arg3, $arg4, $arg5]);
+
+//     $valeur = $valeur->fetchAll(PDO::FETCH_ASSOC);
+
+//     return $valeur;
+// }
+
+function getRes($arg1 = "%", $arg2 = "%", $arg3 = "%", $arg4 = "%", $arg5 = "%"){
+global $dbh;
+
+        $valeur = $dbh->prepare('SELECT count(*) as total FROM 
+        caracteristiques, lieux, usagers, vehicules WHERE
+        caracteristiques.numa = lieux.numa AND 
+        caracteristiques.numa = usagers.numa AND 
+        caracteristiques.numa = vehicules.numa AND 
+        lieux.numa = usagers.numa AND 
+        lieux.numa = vehicules.numa AND 
+        usagers.numa = vehicules.numa AND
+
+        caracteristiques.intersection LIKE ? AND
+        caracteristiques.lumiere LIKE ? AND
+        caracteristiques.atm LIKE ? AND
+        lieux.infra_r LIKE ? AND
+        lieux.etat_r LIKE ?;');
+    $valeur->execute([$arg1, $arg2, $arg3, $arg4, $arg5]);
+
+    $valeur = $valeur->fetchAll(PDO::FETCH_ASSOC);
+
+    return $valeur;
+}
