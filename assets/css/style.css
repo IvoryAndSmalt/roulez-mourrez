@@ -63,3 +63,51 @@ input, textarea{
 *{
 	background: rgba(0,0,0,0.1);
 }
+
+/* ==================== SECTION DEPARTEMENTS ==================================== */
+
+.map{
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.map--image {
+    width: 60%;
+    float: left;
+}
+.map--image svg {
+    width: 100%;
+    height: 650px;
+}
+
+.map--image path{
+    fill: rgb(151, 205, 226);
+    stroke: #FFF; /*Permet de séparer les départements*/
+    stroke-width: 1px;
+    transition: fill 0.3s;
+}
+
+.map--image .is-active path{
+    fill: rgb(6, 42, 56);
+}
+
+
+.map--list{
+    float: right;
+    width: 300px;
+    height: 700px;
+}
+
+.map--list a{
+    fill:rgb(6, 42, 56);
+    /* color: inherit; hérite de la couleur du parent */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.map--list a.is-active{
+    color: rgb(151, 205, 226); 
+    font-weight: bold;
+    text-decoration: underline;
+}

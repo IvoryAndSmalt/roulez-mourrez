@@ -6,6 +6,7 @@ require('env.php');
 $dbh = new PDO('mysql:host='. $host .';dbname='. $dbname, $user, $pass);
 $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
 
+
 function getValues($table, $colonne){
     global $dbh;
 
@@ -17,28 +18,8 @@ function getValues($table, $colonne){
     return $valeur;
 }
 
-// function getResultat($arg1 = "*", $arg2 = "*", $arg3 = "*", $arg4 = "*", $arg5 = "*"){
-//     global $dbh;
-
-//     $valeur = $dbh->prepare('SELECT *, count(*) FROM caracteristiques, lieux, usagers, vehicules WHERE
-//     caracteristiques.numa = lieux.numa AND 
-//     caracteristiques.numa = usagers.numa AND 
-//     caracteristiques.numa = vehicules.numa AND 
-//     lieux.numa = usagers.numa AND 
-//     lieux.numa = vehicules.numa AND 
-//     usagers.numa = vehicules.numa AND
-//     '.$arg1.' = ?
-
-//     ;');
-//     $valeur->execute([$arg1, $arg2, $arg3, $arg4, $arg5]);
-
-//     $valeur = $valeur->fetchAll(PDO::FETCH_ASSOC);
-
-//     return $valeur;
-// }
-
 function getRes($arg1 = "%", $arg2 = "%", $arg3 = "%", $arg4 = "%", $arg5 = "%"){
-global $dbh;
+    global $dbh;
 
         $valeur = $dbh->prepare('SELECT count(*) as total FROM 
         caracteristiques, lieux, usagers, vehicules WHERE
@@ -55,6 +36,19 @@ global $dbh;
         lieux.infra_r LIKE ? AND
         lieux.etat_r LIKE ?;');
     $valeur->execute([$arg1, $arg2, $arg3, $arg4, $arg5]);
+
+    $valeur = $valeur->fetchAll(PDO::FETCH_ASSOC); 
+
+    return $valeur;
+}
+
+
+function getDepartements($table, $colonne){
+    global $dbh;
+
+    $valeur = $dbh->prepare('SELECT '.count($colonne).' FROM '.$table.' GROUP BY '.$colonne);
+    // SELECT departement, count(*) FROM caracteristiques GROUP BY departement  
+    $valeur->execute();
 
     $valeur = $valeur->fetchAll(PDO::FETCH_ASSOC);
 
