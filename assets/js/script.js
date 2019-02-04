@@ -95,7 +95,7 @@ var totalAccident=100000;
 
 
 
-boutonEnvoyer.addEventListener("click", function() { rempliCarte(); });
+boutonEnvoyer[0].addEventListener("click", function() { rempliCarte(); });
 
 function rempliCarte() { 
     if (resultatObtenu !=0 && resultatObtenu != null) {
