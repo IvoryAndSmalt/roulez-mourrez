@@ -76,6 +76,11 @@ if(isset($_POST) && !empty($_POST)){
     $lieux_infra_r = getValues('lieux', 'infra_r');
     $lieux_situation_acc = getValues('lieux', 'situation_acc');
 
+// ==================== SECTION RESULTAT & DEPARTEMENTS ==============================
+    $resultat =  getRes("total");
+    $caracteristiques_departement = getValues('caracteristiques', 'departement');
+
+
 // On charge le fichier voulus du dossier Views 
 $template = $twig->load('home.twig');
 
@@ -110,4 +115,6 @@ echo $template->render(array(
     "vehicules_manoeuvre" => $vehicules_manoeuvre,
 
     // "resultat" => $resultat
+    // "caracteristiques_departement" => $caracteristiques_departement,
+
 ));
