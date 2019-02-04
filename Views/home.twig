@@ -7,238 +7,272 @@
 
 
 {% block header %}
-    <section class="container_header">
-        
 
+    <section class="container_header">
         <form id="formulaire" action="index.php" method="POST" class="navigation">
             <ul class="menu">
-                <a id="logo" href="index.php"><img src="assets/WIREFRAME/logo.png" alt="logo"/></a>
+                <a id="logo" href="Home"><img src="assets/WIREFRAME/logo.png" alt="logo"/></a>
                 {# ============SECTION LIEUX ============== #}
-                <li><a class="menuicon" href="#"><img src="assets/img/position.svg" width="30px" alt="icône de position"/></a>
+                <li>
+                    <a class="menuicon" href="#">
+                        <img src="assets/img/position.svg" width="30px" alt="icône de position"/>
+                    </a>
                     <ul class="menuul">
                         <li class="lieuxmenu">
-                            {# =====SELECT LUMIERE===== #}
-                            <label class= "label" for="caracteristiques_lumiere">Lumière : </label>
-                            <select class="select" name="caracteristiques_lumiere" id="caracteristiques_lumiere">
-                                <option value="*">Tous</option>
-                                {% for valeur in caracteristiques_lumiere %}
-                                    <option value="{{ valeur.lumiere }}">{{ valeur.lumiere }}</option>
-                                {% endfor %}
-                            </select>
 
-                            {# =====SELECT ATMOSPHERE===== #}
-                            <label class= "label" for="caracteristiques_atm">Atmosphère : </label>
-                            <select class= "select" name="caracteristiques_atm" id="caracteristiques_atm">
-                                <option value="*">Tous</option>
-                                {% for valeur in caracteristiques_atm %}
-                                    <option value="{{ valeur.atm }}">{{ valeur.atm }}</option>
-                                {% endfor %}
-                            </select>
+                            <div class="row">
+                            {# Premiere colonne lieux #}
+                                {# =====SELECT LUMIERE===== #}
+                                <label class= "label" for="caracteristiques_lumiere">Lumière : </label>
+                                <select class="select" name="caracteristiques_lumiere" id="caracteristiques_lumiere">
+                                    <option value="">Tous</option>
+                                    {% for valeur in caracteristiques_lumiere %}
+                                        <option value="{{ valeur.lumiere }}">{{ valeur.lumiere }}</option>
+                                    {% endfor %}
+                                </select>
 
-                            {# =====SELECT AGGLOMERATION===== #}
-                            <label class= "label" for="caracteristiques_agglo">Agglomération : </label>
-                            <select class= "select" name="caracteristiques_agglo" id="caracteristiques_agglo">
-                                <option value="*">Tous</option>
-                                {% for valeur in caracteristiques_agglo %}
-                                    <option value="{{ valeur.agglo }}">{{ valeur.agglo }}</option>
-                                {% endfor %}
-                            </select>
+                                {# =====SELECT ATMOSPHERE===== #}
+                                <label class= "label" for="caracteristiques_atm">Atmosphère : </label>
+                                <select class= "select" name="caracteristiques_atm" id="caracteristiques_atm">
+                                    <option value="">Tous</option>
+                                    {% for valeur in caracteristiques_atm %}
+                                        <option value="{{ valeur.atm }}">{{ valeur.atm }}</option>
+                                    {% endfor %}
+                                </select>
 
-                            {# ======SELECT CATEGORIE ROUTE============== #}
-                            <label class= "label" for="lieux_categorie_r">Catégorie de route : </label>
-                            <select class= "select" name="lieux_categorie_r" id="lieux_categorie_r">
-                                <option value="*">Tous</option>
-                                {% for valeur in lieux_categorie_r %}
-                                    <option value="{{ valeur.categorie_r }}">{{ valeur.categorie_r }}</option>
-                                {% endfor %}
-                            </select>
+                                {# =====SELECT AGGLOMERATION===== #}
+                                <label class= "label" for="caracteristiques_agglo">Agglomération : </label>
+                                <select class= "select" name="caracteristiques_agglo" id="caracteristiques_agglo">
+                                    <option value="">Tous</option>
+                                    {% for valeur in caracteristiques_agglo %}
+                                        <option value="{{ valeur.agglo }}">{{ valeur.agglo }}</option>
+                                    {% endfor %}
+                                </select>
 
-                            {# =====SELECT INFRASTRUCTURE ROUTE===== #}
-                            <label class= "label" for="lieux_infra_r">Infrastructure de la route : </label>
-                            <select class= "select" name="lieux_infra_r" id="lieux_infra_r">
-                                <option value="*">Tous</option>
-                                {% for valeur in lieux_infra_r %}
-                                    <option value="{{ valeur.infra_r }}">{{ valeur.infra_r }}</option>
-                                {% endfor %}
-                            </select>
+                                {# ======SELECT CATEGORIE ROUTE============== #}
+                                <label class= "label" for="lieux_categorie_r">Catégorie de route : </label>
+                                <select class= "select" name="lieux_categorie_r" id="lieux_categorie_r">
+                                    <option value="">Tous</option>
+                                    {% for valeur in lieux_categorie_r %}
+                                        <option value="{{ valeur.categorie_r }}">{{ valeur.categorie_r }}</option>
+                                    {% endfor %}
+                                </select>
 
-                            {# =====SELECT INTERSECTION===== #}
-                            <label class= "label" for="caracteristiques_intersection">Intersection : </label>
-                            <select class= "select" name="caracteristiques_intersection" id="caracteristiques_intersection">
-                                <option value="*">Tous</option>
-                                {% for valeur in caracteristiques_intersection %}
-                                    <option value="{{ valeur.intersection }}">{{ valeur.intersection }}</option>
-                                {% endfor %}
-                            </select>
+                                {# =====SELECT INFRASTRUCTURE ROUTE===== #}
+                                <label class= "label" for="lieux_infra_r">Infrastructure de la route : </label>
+                                <select class= "select" name="lieux_infra_r" id="lieux_infra_r">
+                                    <option value="">Tous</option>
+                                    {% for valeur in lieux_infra_r %}
+                                        <option value="{{ valeur.infra_r }}">{{ valeur.infra_r }}</option>
+                                    {% endfor %}
+                                </select>
 
-                            {# =====SELECT REGIME CIRCULATION ===== #}
-                            <label class= "label" for="lieux_regime_circ">Régime de circulation : </label>
-                            <select class= "select" name="lieux_regime_circ" id="lieux_regime_circ">
-                                <option value="*">Tous</option>
-                                {% for valeur in lieux_regime_circ %}
-                                    <option value="{{ valeur.regime_circ }}">{{ valeur.regime_circ }}</option>
-                                {% endfor %}
-                            </select> 
+                                {# =====SELECT INTERSECTION===== #}
+                                <label class= "label" for="caracteristiques_intersection">Intersection : </label>
+                                <select class= "select" name="caracteristiques_intersection" id="caracteristiques_intersection">
+                                    <option value="">Tous</option>
+                                    {% for valeur in caracteristiques_intersection %}
+                                        <option value="{{ valeur.intersection }}">{{ valeur.intersection }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
 
-                            {# =====SELECT class= "select" NOMBRE VOIES===== #}
-                            <label class= "label" for="lieux_nb_voies">Nombre de voies : </label>
-                            <select class= "select" name="lieux_nb_voies" id="lieux_nb_voies">
-                                <option value="*">Tous</option>
-                                {% for valeur in lieux_nb_voies %}
-                                    <option value="{{ valeur.nb_voies }}">{{ valeur.nb_voies }}</option>
-                                {% endfor %}
-                            </select>
+                            <div class="row">
+                            {# Deuxième colonne lieux #}
+                                {# =====SELECT REGIME CIRCULATION ===== #}
+                                <label class= "label" for="lieux_regime_circ">Régime de circulation : </label>
+                                <select class= "select" name="lieux_regime_circ" id="lieux_regime_circ">
+                                    <option value="">Tous</option>
+                                    {% for valeur in lieux_regime_circ %}
+                                        <option value="{{ valeur.regime_circ }}">{{ valeur.regime_circ }}</option>
+                                    {% endfor %}
+                                </select> 
 
-                            {# =====SELECT DECLIVITE===== #}
-                            <label class= "label" for="lieux_declivite">Déclivité (pente) : </label>
-                            <select class= "select" name="lieux_declivite" id="lieux_declivite">
-                                <option value="*">Tous</option>
-                                {% for valeur in lieux_declivite %}
-                                    <option value="{{ valeur.declivite }}">{{ valeur.declivite }}</option>
-                                {% endfor %}
-                            </select>
+                                {# =====SELECT class= "select" NOMBRE VOIES===== #}
+                                <label class= "label" for="lieux_nb_voies">Nombre de voies : </label>
+                                <select class= "select" name="lieux_nb_voies" id="lieux_nb_voies">
+                                    <option value="">Tous</option>
+                                    {% for valeur in lieux_nb_voies %}
+                                        <option value="{{ valeur.nb_voies }}">{{ valeur.nb_voies }}</option>
+                                    {% endfor %}
+                                </select>
 
-                            {# =====SELECT COURBE ROUTE===== #}
-                            <label class= "label" for="lieux_courbe_r">Courbe de la route : </label>
-                            <select class= "select" name="lieux_courbe_r" id="lieux_courbe_r">
-                                <option value="*">Tous</option>
-                                {% for valeur in lieux_courbe_r %}
-                                    <option value="{{ valeur.courbe_r }}">{{ valeur.courbe_r }}</option>
-                                {% endfor %}
-                            </select>
+                                {# =====SELECT DECLIVITE===== #}
+                                <label class= "label" for="lieux_declivite">Déclivité (pente) : </label>
+                                <select class= "select" name="lieux_declivite" id="lieux_declivite">
+                                    <option value="">Tous</option>
+                                    {% for valeur in lieux_declivite %}
+                                        <option value="{{ valeur.declivite }}">{{ valeur.declivite }}</option>
+                                    {% endfor %}
+                                </select>
 
-                            {# =====SELECT ETAT ROUTE===== #}
-                            <label class= "label" for="lieux_etat_r">Etat de la route : </label>
-                            <select class= "select" name="lieux_etat_r" id="lieux_etat_r">
-                                <option value="*">Tous</option>
-                                {% for valeur in lieux_etat_r %}
-                                    <option value="{{ valeur.etat_r }}">{{ valeur.etat_r }}</option>
-                                {% endfor %}
-                            </select>
+                                {# =====SELECT COURBE ROUTE===== #}
+                                <label class= "label" for="lieux_courbe_r">Courbe de la route : </label>
+                                <select class= "select" name="lieux_courbe_r" id="lieux_courbe_r">
+                                    <option value="">Tous</option>
+                                    {% for valeur in lieux_courbe_r %}
+                                        <option value="{{ valeur.courbe_r }}">{{ valeur.courbe_r }}</option>
+                                    {% endfor %}
+                                </select>
+
+                                {# =====SELECT ETAT ROUTE===== #}
+                                <label class= "label" for="lieux_etat_r">Etat de la route : </label>
+                                <select class= "select" name="lieux_etat_r" id="lieux_etat_r">
+                                    <option value="">Tous</option>
+                                    {% for valeur in lieux_etat_r %}
+                                        <option value="{{ valeur.etat_r }}">{{ valeur.etat_r }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
                         </li>
                     </ul>
                 </li>
+
                 {# ==========SECTION USAGERS ============ #}
-                <li><a class="menuicon" href="#"><img src="assets/img/pedestrian.svg" width="30px" alt="icône d'un piéton"/></a>
+                <li>
+                    <a class="menuicon" href="#">
+                        <img src="assets/img/pedestrian.svg" width="30px" alt="icône d'un piéton"/>
+                    </a>
                     <ul class="menuul">
                         <li class="usagersmenu">
-                            {# =====SELECT OCCUPANTS TP EN COMMUN===== #}
-                            <label class= "label" for="vehicules_occupants_tc">Nb d'occupants (Transport en commudn) : </label>
-                            <select class= "select" name="vehicules_occupants_tc" id="vehicules_occupants_tc">
-                                <option value="*">Tous</option>
-                                {% for valeur in vehicules_occupants_tc %}
-                                    <option value="{{ valeur.occupants_tc }}">{{ valeur.occupants_tc }}</option>
-                                {% endfor %}
-                            </select>
 
-                            {# =====SELECT CATEGORIE_U===== #}
-                            <label class= "label" for="usagers_categorie_u">Categorie Usagers : </label>
-                            <select class= "select" name="usagers_categorie_u" id="usagers_categorie_u">
-                                <option value="*">Tous</option>
-                                {% for valeur in usagers_categorie_u %}
-                                    <option value="{{ valeur.categorie_u }}">{{ valeur.categorie_u }}</option>
-                                {% endfor %}
-                            </select>
-                            {# =====SELECT SEXE===== #}
-                            <label class= "label" for="usagers_sexe">Sexe : </label>
-                            <select class= "select" name="usagers_sexe" id="usagers_sexe">
-                                <option value="*">Tous</option>
-                                {% for valeur in usagers_sexe %}
-                                    <option value="{{ valeur.sexe }}">{{ valeur.sexe }}</option>
-                                {% endfor %}
-                            </select>
+                            <div class="row">
+                            {# Usagers premiere colonne #}
+                                {# =====SELECT OCCUPANTS TP EN COMMUN===== #}
+                                <label class= "label" for="vehicules_occupants_tc">Nb d'occupants (Transport en commudn) : </label>
+                                <select class= "select" name="vehicules_occupants_tc" id="vehicules_occupants_tc">
+                                    <option value="">Tous</option>
+                                    {% for valeur in vehicules_occupants_tc %}
+                                        <option value="{{ valeur.occupants_tc }}">{{ valeur.occupants_tc }}</option>
+                                    {% endfor %}
+                                </select>
 
-                            {# =====SELECT USAGES_GRAVITE===== #}
-                            <label class= "label" for="usagers_gravite">Gravite : </label>
-                            <select class= "select" name="usagers_gravite" id="usagers_gravite">
-                                <option value="*">Tous</option>
-                                {% for valeur in usagers_gravite %}
-                                    <option value="{{ valeur.gravite }}">{{ valeur.gravite }}</option>
-                                {% endfor %}
-                            </select>
+                                {# =====SELECT CATEGORIE_U===== #}
+                                <label class= "label" for="usagers_categorie_u">Categorie Usagers : </label>
+                                <select class= "select" name="usagers_categorie_u" id="usagers_categorie_u">
+                                    <option value="">Tous</option>
+                                    {% for valeur in usagers_categorie_u %}
+                                        <option value="{{ valeur.categorie_u }}">{{ valeur.categorie_u }}</option>
+                                    {% endfor %}
+                                </select>
+                                {# =====SELECT SEXE===== #}
+                                <label class= "label" for="usagers_sexe">Sexe : </label>
+                                <select class= "select" name="usagers_sexe" id="usagers_sexe">
+                                    <option value="">Tous</option>
+                                    {% for valeur in usagers_sexe %}
+                                        <option value="{{ valeur.sexe }}">{{ valeur.sexe }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
 
-                            {# =====SELECT EQUIPEMENT_SECU===== #}
-                            <label class= "label" for="usagers_equipement_secu">Equipement de sécurité : </label>
-                            <select class= "select" name="usagers_equipement_secu" id="usagers_equipement_secu">
-                                <option value="*">Tous</option>
-                                {% for valeur in usagers_equipement_secu %}
-                                    <option value="{{ valeur.equipement_secu }}">{{ valeur.equipement_secu }}</option>
-                                {% endfor %}
-                            </select>
+                            <div class="row">
+                            {# Usagers deuxieme colonne #}
+                                {# =====SELECT USAGES_GRAVITE===== #}
+                                <label class= "label" for="usagers_gravite">Gravite : </label>
+                                <select class= "select" name="usagers_gravite" id="usagers_gravite">
+                                    <option value="">Tous</option>
+                                    {% for valeur in usagers_gravite %}
+                                        <option value="{{ valeur.gravite }}">{{ valeur.gravite }}</option>
+                                    {% endfor %}
+                                </select>
 
-                            {# =====SELECT TRAJET===== #}
-                            <label class= "label" for="usagers_trajet">Trajet : </label>
-                            <select class= "select" name="usagers_trajet" id="usagers_trajet">
-                                <option value="*">Tous</option>
-                                {% for valeur in usagers_trajet %}
-                                    <option value="{{ valeur.trajet }}">{{ valeur.trajet }}</option>
-                                {% endfor %}
-                            </select>
+                                {# =====SELECT EQUIPEMENT_SECU===== #}
+                                <label class= "label" for="usagers_equipement_secu">Equipement de sécurité : </label>
+                                <select class= "select" name="usagers_equipement_secu" id="usagers_equipement_secu">
+                                    <option value="">Tous</option>
+                                    {% for valeur in usagers_equipement_secu %}
+                                        <option value="{{ valeur.equipement_secu }}">{{ valeur.equipement_secu }}</option>
+                                    {% endfor %}
+                                </select>
+
+                                {# =====SELECT TRAJET===== #}
+                                <label class= "label" for="usagers_trajet">Trajet : </label>
+                                <select class= "select" name="usagers_trajet" id="usagers_trajet">
+                                    <option value="">Tous</option>
+                                    {% for valeur in usagers_trajet %}
+                                        <option value="{{ valeur.trajet }}">{{ valeur.trajet }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
                         </li>
                     </ul>
                 </li>
-                {# =====SELECT CATEGORIE VEHICULES===== #}       
-                <li><a class="menuicon" href="#"><img src="assets/img/car.svg" width="30px" alt="icône d'un véhicule"/></a>
+
+                {# ===== SECTION VEHICULES ===== #}       
+                <li>
+                    <a class="menuicon" href="#">
+                        <img src="assets/img/car.svg" width="30px" alt="icône d'un véhicule"/>
+                    </a>
                     <ul class="menuul">
                         <li class="vehiculesmenu">
-                        <input type="submit" value="envoyer" class="boutonEnvoyer">
-                            <label class= "label" for="vehicules_categorie_v">Catégorie de véhicule : </label>
-                            <select class= "select" name="vehicules_categorie_v" id="vehicules_categorie_v">
-                                <option value="*">Tous</option>
-                                {% for valeur in vehicules_categorie_v %}
-                                    <option value="{{ valeur.categorie_v }}">{{ valeur.categorie_v }}</option>
-                                {% endfor %}
-                            </select>
+                            
+                            <div class="row">
+                            {# vehicules premiere colonne #}
+                                {# SELECT CATEGORIE VEHICULE #}
+                                <label class= "label" for="vehicules_categorie_v">Catégorie de véhicule : </label>
+                                <select class= "select" name="vehicules_categorie_v" id="vehicules_categorie_v">
+                                    <option value="">Tous</option>
+                                    {% for valeur in vehicules_categorie_v %}
+                                        <option value="{{ valeur.categorie_v }}">{{ valeur.categorie_v }}</option>
+                                    {% endfor %}
+                                </select>
 
-                            {# =====SELECT COLLISION===== #}
-                            <label class="label" for="caracteristiques_collision">Collision : </label>
-                            <select class="select" name="caracteristiques_collision" id="caracteristiques_collision">
-                                <option value="">Tous</option>
-                                {% for valeur in caracteristiques_collision %}
-                                    <option value="{{ valeur.collision }}">{{ valeur.collision }}</option>
-                                {% endfor %}
-                            </select>
-                        
-                            {# =====SELECT OBSTACLES FIXES===== #}
-                            <label class="label" for="vehicules_obstacle_fixe">Obstacle fixe : </label>
-                            <select class="select" name="vehicules_obstacle_fixe" id="vehicules_obstacle_fixe">
-                                <option value="">Tous</option>
-                                {% for valeur in vehicules_obstacle_fixe %}
-                                    <option value="{{ valeur.obstacle_fixe }}">{{ valeur.obstacle_fixe }}</option>
-                                {% endfor %}
-                            </select>
-                            {# =====SELECT OBSTACLES MOBILES===== #}
-                            <label class="label" for="vehicules_obstacle_mobile">Obstacle mobile : </label>
-                            <select class="select" name="vehicules_obstacle_mobile" id="vehicules_obstacle_mobile">
-                                <option value="">Tous</option>
-                                {% for valeur in vehicules_obstacle_mobile %}
-                                    <option value="{{ valeur.obstacle_mobile }}">{{ valeur.obstacle_mobile }}</option>
-                                {% endfor %}
-                            </select>
+                                {# =====SELECT COLLISION===== #}
+                                <label class="label" for="caracteristiques_collision">Collision : </label>
+                                <select class="select" name="caracteristiques_collision" id="caracteristiques_collision">
+                                    <option value="">Tous</option>
+                                    {% for valeur in caracteristiques_collision %}
+                                        <option value="{{ valeur.collision }}">{{ valeur.collision }}</option>
+                                    {% endfor %}
+                                </select>
+                            
+                                {# =====SELECT OBSTACLES FIXES===== #}
+                                <label class="label" for="vehicules_obstacle_fixe">Obstacle fixe : </label>
+                                <select class="select" name="vehicules_obstacle_fixe" id="vehicules_obstacle_fixe">
+                                    <option value="">Tous</option>
+                                    {% for valeur in vehicules_obstacle_fixe %}
+                                        <option value="{{ valeur.obstacle_fixe }}">{{ valeur.obstacle_fixe }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <div class="row">
+                            {# deuxieme colonne vehidules #}
+                                {# =====SELECT OBSTACLES MOBILES===== #}
+                                <label class="label" for="vehicules_obstacle_mobile">Obstacle mobile : </label>
+                                <select class="select" name="vehicules_obstacle_mobile" id="vehicules_obstacle_mobile">
+                                    <option value="">Tous</option>
+                                    {% for valeur in vehicules_obstacle_mobile %}
+                                        <option value="{{ valeur.obstacle_mobile }}">{{ valeur.obstacle_mobile }}</option>
+                                    {% endfor %}
+                                </select>
 
-                            {# =====SELECT POINT CHOC===== #}
-                            <label class="label" for="vehicules_point_choc">Point choc : </label>
-                            <select class="select" name="vehicules_point_choc" id="vehicules_point_choc">
-                                <option value="">Tous</option>
-                                {% for valeur in vehicules_point_choc %}
-                                    <option value="{{ valeur.point_choc }}">{{ valeur.point_choc }}</option>
-                                {% endfor %}
-                            </select>
+                                {# =====SELECT POINT CHOC===== #}
+                                <label class="label" for="vehicules_point_choc">Point choc : </label>
+                                <select class="select" name="vehicules_point_choc" id="vehicules_point_choc">
+                                    <option value="">Tous</option>
+                                    {% for valeur in vehicules_point_choc %}
+                                        <option value="{{ valeur.point_choc }}">{{ valeur.point_choc }}</option>
+                                    {% endfor %}
+                                </select>
 
-                            {# =====SELECT MANOEUVRE===== #}
-                            <label class="label" for="vehicules_manoeuvre">Manoeuvre : </label>
-                            <select class="select" name="vehicules_manoeuvre" id="vehicules_manoeuvre">
-                                <option value="">Tous</option>
-                                {% for valeur in vehicules_manoeuvre %}
-                                    <option value="{{ valeur.manoeuvre }}">{{ valeur.manoeuvre }}</option>
-                                {% endfor %}
-                            </select>
+                                {# =====SELECT MANOEUVRE===== #}
+                                <label class="label" for="vehicules_manoeuvre">Manoeuvre : </label>
+                                <select class="select" name="vehicules_manoeuvre" id="vehicules_manoeuvre">
+                                    <option value="">Tous</option>
+                                    {% for valeur in vehicules_manoeuvre %}
+                                        <option value="{{ valeur.manoeuvre }}">{{ valeur.manoeuvre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </li>
                     </ul>
                 </li>  
             </ul>
             <div class="tags">
-
+<input type="submit" value="envoyer" class="boutonEnvoyer">
             </div>       
         </form>
     </section>
@@ -246,12 +280,10 @@
 
 {% block main %}
     <section class="container_resultat">
-        <form action="index.php" method="POST" id="resultat">
             <div class="resultat">
                 {{totalDepartement}}
 
             </div>
-        </form>
     </section>
  
     <section class="container_carte">

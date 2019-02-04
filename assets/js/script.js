@@ -1,4 +1,4 @@
-// =============== NAVIGATION ============================
+// =============== NAVIGATION ======================
 let menuicons = document.getElementsByClassName('menuicon');
 let menuul = document.getElementsByClassName('menuul');
 let formulaire = document.getElementById('formulaire');
@@ -9,7 +9,7 @@ for (let j = 0; j < menuul.length; j++) {
 for (let i = 0; i < menuicons.length; i++) {
     menuicons[i].addEventListener('click', function(e){
         e.preventDefault();
-        menuul[i].style.top= parseInt(window.getComputedStyle(formulaire).height)+"px";
+        menuul[i].style.top= parseInt(window.getComputedStyle(formulaire).height)+5+"px";
         if(menuul[i].style.display==="block"){
             for (let j = 0; j < menuul.length; j++) {
                 menuul[j].style.display="none";
@@ -23,7 +23,6 @@ for (let i = 0; i < menuicons.length; i++) {
         }
     })
 }
-
 
 var selects = document.getElementsByClassName("select");
 var nomDuChamp = document.getElementsByClassName("label");
@@ -86,25 +85,24 @@ var activeArea = function (id) {
     }
 }
 
-    // Rend les formes géométriques active avec la list au passage de la souris
-    paths.forEach(function (path) {
-        path.addEventListener('mouseenter', function (event) {
-            // debugger
-            var id = this.id.replace('dpt-', '');
-            activeArea(id);
-        })
+// Rend les formes géométriques active avec la list au passage de la souris
+paths.forEach(function (path) {
+    path.addEventListener('mouseenter', function (event) {
+        // debugger
+        var id = this.id.replace('dpt-', '');
+        activeArea(id);
     })
+})
 
 
-    // Inverse : Rend la list active avec les formes géométriques au passage de la souris
-    links.forEach(function (link) {
-        link.addEventListener('mouseenter', function (event) {
-            // debugger
-            var id = this.id.replace('list-', '');
-            activeArea(id);
-        })
+// Inverse : Rend la list active avec les formes géométriques au passage de la souris
+links.forEach(function (link) {
+    link.addEventListener('mouseenter', function (event) {
+        // debugger
+        var id = this.id.replace('list-', '');
+        activeArea(id);
     })
-
+})
 
 
 // En dehors de la carte plus aucun élément sélectionné
