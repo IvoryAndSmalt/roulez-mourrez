@@ -6,7 +6,6 @@ require "LoaderTwig.php";
 // // Chargement du Model
 require('Models/Home.php');
 
-
 if(isset($_POST) && !empty($_POST)){
     $i = 1;
     foreach ($_POST as $key => $value) {
@@ -42,10 +41,7 @@ if(isset($_POST) && !empty($_POST)){
         $test = getRes();
         echo "il y a ".$test[0]['total']." résultats.";
     }
-    
 }
-
-//ajouter l'appel de la fonction en fonction du nombre d'arguments renseignés
 
 // =============================== SECTION CARACTERISTIQUES===========================
     $caracteristiques_lumiere = getValues('caracteristiques', 'lumiere');
