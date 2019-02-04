@@ -13,9 +13,9 @@
         <form id="formulaire" action="index.php" method="POST" class="navigation">
             <ul class="menu">
                 <a id="logo" href="index.php"><img src="assets/WIREFRAME/logo.png" alt="logo"/></a>
-                {# ============SECTION LIEUX ================== #}
-                <li><a href="#"><img src="assets/img/position.svg" width="30px" alt="icône de position"/></a>
-                    <ul>
+                {# ============SECTION LIEUX ============== #}
+                <li><a class="menuicon" href="#"><img src="assets/img/position.svg" width="30px" alt="icône de position"/></a>
+                    <ul class="menuul">
                         <li class="lieuxmenu">
                             {# =====SELECT LUMIERE===== #}
                             <label class= "label" for="caracteristiques_lumiere">Lumière : </label>
@@ -118,9 +118,9 @@
                         </li>
                     </ul>
                 </li>
-                {# =================SECTION USAGERS ============== #}
-                <li><a href="#"><img src="assets/img/pedestrian.svg" width="30px" alt="icône d'un piéton"/></a>
-                    <ul>
+                {# ==========SECTION USAGERS ============ #}
+                <li><a class="menuicon" href="#"><img src="assets/img/pedestrian.svg" width="30px" alt="icône d'un piéton"/></a>
+                    <ul class="menuul">
                         <li class="usagersmenu">
                             {# =====SELECT OCCUPANTS TP EN COMMUN===== #}
                             <label class= "label" for="vehicules_occupants_tc">Nb d'occupants (Transport en commudn) : </label>
@@ -178,8 +178,8 @@
                     </ul>
                 </li>
                 {# =====SELECT CATEGORIE VEHICULES===== #}       
-                <li><a href="#"><img src="assets/img/car.svg" width="30px" alt="icône d'un véhicule"/></a>
-                    <ul>
+                <li><a class="menuicon" href="#"><img src="assets/img/car.svg" width="30px" alt="icône d'un véhicule"/></a>
+                    <ul class="menuul">
                         <li class="vehiculesmenu">
                         <input type="submit" value="envoyer" class="boutonEnvoyer">
                             <label class= "label" for="vehicules_categorie_v">Catégorie de véhicule : </label>
@@ -664,7 +664,6 @@
 
 
 {% block script %}
-    <script src="assets/js/script.js"></script>
     <script src="assets/js/polyfill.js"></script>
 	<script src="assets/js/script.js"></script>
 {% endblock script %}
