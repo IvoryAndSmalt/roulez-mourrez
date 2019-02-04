@@ -24,7 +24,6 @@ for (let i = 0; i < menuicons.length; i++) {
     })
 }
 
-
 var selects = document.getElementsByClassName("select");
 var nomDuChamp = document.getElementsByClassName("label");
 var contenuTableau = [];
