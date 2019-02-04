@@ -248,16 +248,8 @@
     <section class="container_resultat">
         <form action="index.php" method="POST" id="resultat">
             <div class="resultat">
-                {# {{sql.}} #}
-                <b>{{ 'Recherche avec'}}</b>
-                 {% for valeur in totalDepartement %}
-                    <ul value="{{ valeur.totalDepartement }}">{{ valeur.totalDepartement }}</ul>
-                {% endfor %}
-                {# {{table1}} {{colonne1}} = {{valeur1}
-                {{table2}} {{colonne2}} = {{valeur2}
-                {{table3}} {{colonne3}} = {{valeur3}
-                {{table4}} {{colonne4}} = {{valeur4}
-                {{table5}} {{colonne5}} = {{valeur5} #}
+                {{totalDepartement}}
+
             </div>
         </form>
     </section>

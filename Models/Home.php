@@ -97,29 +97,31 @@ function getDepartements($arg1 = "vehicules_categorie_v@%", $arg2 = "vehicules_c
     $colonne5 = substr_replace(stristr(stristr($arg5, "_"), "@", true), "",0,1);
     $valeur5 = str_replace("@", "", stristr(stristr($arg5, "_"), "@"));
    
-    $sql =  'SELECT departement, count(*) as totalDepartement FROM 
+    $sql =  'SELECT caracteristiques.departement, count(caracteristiques.departement) as totalDepartement FROM 
     caracteristiques, lieux, usagers, vehicules WHERE
     caracteristiques.numa = lieux.numa AND 
     caracteristiques.numa = usagers.numa AND 
     caracteristiques.numa = vehicules.numa AND 
     lieux.numa = usagers.numa AND 
     lieux.numa = vehicules.numa AND 
-    usagers.numa = vehicules.numa
-    GROUP BY departement
+    usagers.numa = vehicules.numa AND
+
 
     '.$table1.'.'.$colonne1.' LIKE ? AND
     '.$table2.'.'.$colonne2.' LIKE ? AND
     '.$table3.'.'.$colonne3.' LIKE ? AND
     '.$table4.'.'.$colonne4.' LIKE ? AND
-    '.$table5.'.'.$colonne5.' LIKE ?;';
+    '.$table5.'.'.$colonne5.' LIKE ?
+    
+    GROUP BY caracteristiques.departement;';
 
-    echo $sql."<br>";
-    echo "<br>Recherche avec :<br>";
-    echo $table1.".".$colonne1."=>".$valeur1."<br>";
-    echo $table2.".".$colonne2."=>".$valeur2."<br>";
-    echo $table3.".".$colonne3."=>".$valeur3."<br>";
-    echo $table4.".".$colonne4."=>".$valeur4."<br>";
-    echo $table5.".".$colonne5."=>".$valeur5."<br>";
+    // echo $sql."<br>";
+    // echo "<br>Recherche avec :<br>";
+    // echo $table1.".".$colonne1."=>".$valeur1."<br>";
+    // echo $table2.".".$colonne2."=>".$valeur2."<br>";
+    // echo $table3.".".$colonne3."=>".$valeur3."<br>";
+    // echo $table4.".".$colonne4."=>".$valeur4."<br>";
+    // echo $table5.".".$colonne5."=>".$valeur5."<br>";
 
     $valeur = $dbh->prepare($sql);
 

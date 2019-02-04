@@ -40,6 +40,10 @@ if(isset($_POST) && !empty($_POST)){
     else{
         $test = getRes();
         echo "il y a ".$test[0]['total']." résultats.";
+        $caracteristiques_departement = getDepartements();
+        
+        var_dump($caracteristiques_departement);
+        echo "il y a ".$caracteristiques_departement[0]['totalDepartement']." résulttfardrftrdts.";
     }
 }
 
@@ -77,9 +81,8 @@ if(isset($_POST) && !empty($_POST)){
     $lieux_situation_acc = getValues('lieux', 'situation_acc');
 
 // ==================== SECTION RESULTAT & DEPARTEMENTS ==============================
-    $resultat =  getRes("total");
 
-    $caracteristiques_departement = getValues('caracteristiques', 'departement');
+
 
 
 // On charge le fichier voulus du dossier Views 
@@ -114,8 +117,4 @@ echo $template->render(array(
     "vehicules_obstacle_mobile" => $vehicules_obstacle_mobile,
     "vehicules_point_choc" => $vehicules_point_choc,
     "vehicules_manoeuvre" => $vehicules_manoeuvre,
-
-    // "resultat" => $resultat
-    "caracteristiques_departement" => $caracteristiques_departement,
-
 ));
