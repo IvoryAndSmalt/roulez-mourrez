@@ -1,4 +1,4 @@
-// =============== NAVIGATION ============================
+// =============== NAVIGATION ======================
 let menuicons = document.getElementsByClassName('menuicon');
 let menuul = document.getElementsByClassName('menuul');
 let formulaire = document.getElementById('formulaire');
