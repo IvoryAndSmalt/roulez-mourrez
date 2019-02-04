@@ -17,18 +17,12 @@ function modifieTexte(i) {
     var valeurChamp = nomDuChamp[i].innerHTML;
     var valeurSelect = selects[i].value;
 
-    if (contenuTableau.indexOf(valeurChamp) === -1) {
+        // Assigne Clé valeur
+        contenuTableau[valeurChamp] = valeurSelect;
 
-        // Ajoute les valeurs au tableau
-        contenuTableau.push(valeurChamp, valeurSelect);
         
         // Insère le tableau et enlève les , entre les cases
         resultatSelection.innerHTML = contenuTableau.join(' ');
 
-    }
-    else if (contenuTableau.indexOf(valeurChamp) === 0) {
-        
-    }
         console.log(contenuTableau);
 }
-
