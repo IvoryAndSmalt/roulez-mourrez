@@ -97,7 +97,7 @@ main{
     justify-content: space-around;
 }
 .map--image {
-    width: 60%;
+    /* width: 100%; */
     float: left;
 }
 .map--image svg {
@@ -119,8 +119,8 @@ main{
 
 .map--list{
     float: right;
-    width: 100px;
-	height: 300px;
+    /* width: 100px; */
+	/* height: 650px; */
 }
 
 .map--list a{
