@@ -6,6 +6,7 @@ require('env.php');
 $dbh = new PDO('mysql:host='. $host .';dbname='. $dbname, $user, $pass);
 $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
 
+
 function getValues($table, $colonne){
     global $dbh;
 
@@ -56,16 +57,29 @@ function getRes($arg1 = "vehicules_categorie_v@%", $arg2 = "vehicules_categorie_
     '.$table5.'.'.$colonne5.' LIKE ?;';
 
     // echo $sql."<br>";
-    echo "<br>Recherche avec :<br>";
-    echo $table1.".".$colonne1."=>".$valeur1."<br>";
-    echo $table2.".".$colonne2."=>".$valeur2."<br>";
-    echo $table3.".".$colonne3."=>".$valeur3."<br>";
-    echo $table4.".".$colonne4."=>".$valeur4."<br>";
-    echo $table5.".".$colonne5."=>".$valeur5."<br>";
+    // echo "<br>Recherche avec :<br>";
+    // echo $table1.".".$colonne1."=>".$valeur1."<br>";
+    // echo $table2.".".$colonne2."=>".$valeur2."<br>";
+    // echo $table3.".".$colonne3."=>".$valeur3."<br>";
+    // echo $table4.".".$colonne4."=>".$valeur4."<br>";
+    // echo $table5.".".$colonne5."=>".$valeur5."<br>";
 
     $valeur = $dbh->prepare($sql);
 
     $valeur->execute([$valeur1, $valeur2, $valeur3, $valeur4, $valeur5]);
+
+    $valeur = $valeur->fetchAll(PDO::FETCH_ASSOC); 
+
+    return $valeur;
+}
+
+
+function getDepartements($table, $colonne){
+    global $dbh;
+
+    $valeur = $dbh->prepare('SELECT '.count($colonne).' FROM '.$table.' GROUP BY '.$colonne);
+    // SELECT departement, count(*) FROM caracteristiques GROUP BY departement  
+    $valeur->execute();
 
     $valeur = $valeur->fetchAll(PDO::FETCH_ASSOC);
 
