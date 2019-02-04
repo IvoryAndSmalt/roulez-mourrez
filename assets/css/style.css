@@ -10,11 +10,15 @@
 header{
     background-color: black;
     background-size: cover;
-    width: 100%;
+	width: 99%;
+	margin: 0.5% auto;
+	border-radius: 5px 5px 5px 5px;
     color: white;
     font-weight: 400;
     font-family: 'Lora', serif;
-    font-size: 1em;
+	font-size: 1em;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 /* ==================== NAVIGATION ====================== */
@@ -43,9 +47,12 @@ header{
     position: absolute;
 	list-style: none;
 	width: 100%;
+	border-radius: 5px;
 	left: 0;
 	color: white;
 	background: black;
+	padding-bottom: 15px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .menu ul a {
@@ -53,10 +60,32 @@ header{
 	overflow: hidden;
 }
 
+.row{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.row label{
+	width: 100%;
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+.row select{
+	display: block;
+	width: 60%;
+	margin: 0 auto;
+}
+
 .tags{
 	width: 100%;
 	background: grey;
 	height: 50px;
+	border-radius: 0 0 5px 5px;
 }
 
 /******* BODY ******/

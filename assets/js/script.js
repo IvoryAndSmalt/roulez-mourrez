@@ -9,7 +9,7 @@ for (let j = 0; j < menuul.length; j++) {
 for (let i = 0; i < menuicons.length; i++) {
     menuicons[i].addEventListener('click', function(e){
         e.preventDefault();
-        menuul[i].style.top= parseInt(window.getComputedStyle(formulaire).height)+"px";
+        menuul[i].style.top= parseInt(window.getComputedStyle(formulaire).height)+5+"px";
         if(menuul[i].style.display==="block"){
             for (let j = 0; j < menuul.length; j++) {
                 menuul[j].style.display="none";
