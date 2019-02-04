@@ -30,11 +30,6 @@ header{
     
 }
 
-.navigation ul li {
-    display: inline-block;
-    position: relative;
-}
-
 .navigation ul li a {
     display: flex;
 	height: 100%;
@@ -47,20 +42,15 @@ header{
 .menu ul {
     position: absolute;
 	list-style: none;
-	opacity: 0;
-	/* transition: opacity 1s ease; */
+	width: 100%;
+	left: 0;
+	color: white;
+	background: black;
 }
 
 .menu ul a {
 	white-space: wrap;
 	overflow: hidden;
-}
-
-.menu li:hover ul {
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-	border-radius: 0 0 6px 6px;
-	left: 5px;
-	opacity: 1;
 }
 
 .tags{
