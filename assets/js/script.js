@@ -2,6 +2,7 @@
 let menuicons = document.getElementsByClassName('menuicon');
 let menuul = document.getElementsByClassName('menuul');
 let formulaire = document.getElementById('formulaire');
+let main = document.querySelector('main');
 for (let j = 0; j < menuul.length; j++) {
     menuul[j].style.display="none";
 }
@@ -24,6 +25,12 @@ for (let i = 0; i < menuicons.length; i++) {
     })
 }
 
+main.addEventListener('click', function(){
+    for (let j = 0; j < menuul.length; j++) {
+        menuul[j].style.display="none";
+    }
+})
+
 var selects = document.getElementsByClassName("select");
 var nomDuChamp = document.getElementsByClassName("label");
 var contenuTableau = [];
@@ -38,19 +45,18 @@ for (let i = 0; i < selects.length; i++) {
 }
 
 function modifieTexte(i) {
+    if (contenuTableau.indexOf(valeurChamp) === -1) {
 
-    var resultatSelection = document.getElementById('resultatSelection');
-    var valeurChamp = nomDuChamp[i].innerHTML;
-    var valeurSelect = selects[i].value;
-
-        // Assigne Clé valeur
-        contenuTableau[valeurChamp] = valeurSelect;
-
+        // Ajoute les valeurs au tableau
+        contenuTableau.push(valeurChamp, valeurSelect);
         
         // Insère le tableau et enlève les , entre les cases
         resultatSelection.innerHTML = contenuTableau.join(' ');
 
-        console.log(contenuTableau);
+    }
+    else if (contenuTableau.indexOf(valeurChamp) === 0) {
+        
+    }
 }
 
 
@@ -89,7 +95,6 @@ paths.forEach(function (path) {
     })
 })
 
-
 // Inverse : Rend la list active avec les formes géométriques au passage de la souris
 links.forEach(function (link) {
     link.addEventListener('mouseenter', function (event) {
@@ -99,12 +104,10 @@ links.forEach(function (link) {
     })
 })
 
-
 // En dehors de la carte plus aucun élément sélectionné
 map.addEventListener('mouseleave', function () {
     activeArea();
 })
-
 
 // Couleurs en fonction du % obtenu 
 
@@ -130,4 +133,119 @@ function rempliCarte() {
             }
         }
     }
+}
+
+/***************************************/
+/***************    AJAX    ************/
+/***************************************/
+
+// paths.forEach(function (path) {
+//     path.addEventListener('click', function (event) {
+//         event.preventDefault();
+//         ajax();
+//     })
+// })
+
+// links.forEach(function (link) {
+//     link.addEventListener('click', function (event) {
+//         event.preventDefault();
+//         ajax();
+//     })
+// })
+
+// //Création d'un objet pour permettre de faire des requêtes http pour échanger du XML
+
+// // var xhr = null; 
+ 
+// if(window.XMLHttpRequest) // Firefox et autres
+//     xhr = new XMLHttpRequest(); 
+// else if(window.ActiveXObject){ // Internet Explorer 
+//     try {
+//             xhr = new ActiveXObject("Msxml2.XMLHTTP");
+//         } catch (e) {
+//             xhr = new ActiveXObject("Microsoft.XMLHTTP");
+//         }
+// }
+// else { // XMLHttpRequest non supporté par le navigateur 
+//     alert("Votre navigateur ne supporte pas les objets XMLHTTPRequest..."); 
+//     xhr = false;
+// }
+
+// // Méthode qui sera appelée sur le click du bouton
+
+// function ajax(){
+//     var xhr = getXhr()
+//     // On défini ce qu'on va faire quand on aura la réponse
+//     xhr.onreadystatechange = function(){
+//         // On ne fait quelque chose que si on a tout reçu et que le serveur est ok
+//         if(xhr.readyState == 4 && xhr.status == 200){
+
+//             contenuTableau = xhr.responseText;
+//         }
+//     }
+
+//     // Methode POST et appel de la page home pour exécuter les requêtes
+//     xhr.open("POST","home.php",true);
+
+//     // Changement du type MINE pour le POST
+//     xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
+//     // Arguments
+//     xhr.send("variable1=truc&variable2=bidule");
+
+//     // ici, l'id de l'auteur
+//     sel = document.getElementById('auteur');
+//     idauteur = sel.options[sel.selectedIndex].value;
+//     xhr.send("idAuteur="+idauteur);
+// }
+
+// // let croixfermer = document.getElementById('');
+// let select_i = document.getElementById('');
+
+// croixfermer.addEventListener('click', function(){
+//     select_i.value="";
+// })
+
+let myselects = document.getElementsByClassName('select');
+let mylabels = document.getElementsByClassName('label');
+let tagsdiv = document.getElementsByClassName('tags')[0];
+let tags = [];
+
+for (let i = 0; i < myselects.length; i++) {
+    myselects[i].addEventListener('change', function(){
+        tagsdiv.innerHTML = "";
+        if(tags.length >= 5){
+            myselects[i].value = "";
+            //afficher message d'erreur;
+        }
+        else{
+            tags = addToArray();
+        }
+        for (let i = 0; i < tags.length; i++) {
+            let mytag = document.createElement('p');
+            mytag.classList.add("tag");
+            mytag.innerHTML = tags[i];
+            tagsdiv.appendChild(mytag);
+        }
+    });
+}
+
+// ============ BOUTON CLEAR ===================
+let clear = document.getElementById('clear');
+clear.addEventListener('click', function(e){
+    e.preventDefault();
+    tagsdiv.innerHTML = "";
+    for (let i = 0; i < myselects.length; i++) {
+        myselects[i].value = "";
+    }
+})
+
+function addToArray(){
+    let tags = [];
+    for (let i = 0; i < myselects.length; i++) {
+        if(myselects[i].value !== ""){
+            tags.push(mylabels[i].innerHTML+" "+myselects[i].value);
+        }
+    }
+    return tags;
 }

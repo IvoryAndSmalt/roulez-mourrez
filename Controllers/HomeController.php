@@ -40,6 +40,8 @@ if(isset($_POST) && !empty($_POST)){
     else{
         $getres = getRes();
         $resultat = $getres[0]['total'];
+        $caracteristiques_departement = getDepartements();
+        $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
     }
 }
 else{
@@ -80,7 +82,6 @@ else{
     $lieux_situation_acc = getValues('lieux', 'situation_acc');
 
 // ==================== SECTION RESULTAT & DEPARTEMENTS ==============================
-    $caracteristiques_departement = getValues('caracteristiques', 'departement');
 
 
 // On charge le fichier voulus du dossier Views 
