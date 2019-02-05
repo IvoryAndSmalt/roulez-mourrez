@@ -97,10 +97,68 @@ main{
     font-size: 1em;
 }
 
-/* ==================== SECTION RESULTAT ==================================== */
+/* =========== SECTION RESULTAT ============= */
 
+.container_resultat{
+	width: 99%;
+	background: lightgray;
+	margin: 0 auto 0.5% auto;
+	border-radius: 5px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
 
-/* ==================== SECTION DEPARTEMENTS ================================ */
+.resultat_inner{
+	width: 100%;
+	margin: auto;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+	display:flex;
+	justify-content: space-between;
+}
+
+.resultat_inner div{
+	width: 50%;
+	padding: 10px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.nombre{
+	background: darkgrey;
+}
+
+.nombre p{
+	font-size: 3em;
+}
+
+.comments{
+	text-align: center;
+	background: ivory;
+	flex-direction: column;
+}
+
+.comments *{
+	display: block;
+	width: 80%;
+	margin: 3% auto;
+}
+
+.comments h2{
+	font-size: 1.4em;
+}
+
+.comments em{
+	font-style: italic;
+	margin-top: -2%;
+	font-size: 0.8em;
+}
+
+.comments p{
+	font-size: 1.2em;
+}
+
+/* =========== SECTION DEPARTEMENTS ============ */
 
 .map{
     overflow: hidden;
@@ -108,6 +166,7 @@ main{
     flex-direction: row;
     justify-content: space-around;
 }
+
 .map--image {
     width: 60%;
     float: left;
@@ -146,4 +205,10 @@ main{
     color: rgb(151, 205, 226); 
     font-weight: bold;
     text-decoration: underline;
+}
+
+@media(min-width: 768px){
+	.resultat_inner{
+		width: 50%;
+	}
 }

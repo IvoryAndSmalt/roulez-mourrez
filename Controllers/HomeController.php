@@ -18,29 +18,32 @@ if(isset($_POST) && !empty($_POST)){
 
     // appeler la fonction avec les arguments donnés
     if(isset($arg5)){
-        $test = getRes($arg1, $arg2, $arg3, $arg4, $arg5);
-        echo "il y a ".$test[0]['total']." résultats.";
+        $getres = getRes($arg1, $arg2, $arg3, $arg4, $arg5);
+        $resultat = $getres[0]['total'];
     }
     elseif (isset($arg4)) {
-        $test = getRes($arg1, $arg2, $arg3, $arg4);
-        echo "il y a ".$test[0]['total']." résultats.";
+        $getres = getRes($arg1, $arg2, $arg3, $arg4);
+        $resultat = $getres[0]['total'];
     }
     elseif (isset($arg3)) {
-        $test = getRes($arg1, $arg2, $arg3);
-        echo "il y a ".$test[0]['total']." résultats.";
+        $getres = getRes($arg1, $arg2, $arg3);
+        $resultat = $getres[0]['total'];
     }
     elseif (isset($arg2)) {
-        $test = getRes($arg1, $arg2);
-        echo "il y a ".$test[0]['total']." résultats.";
+        $getres = getRes($arg1, $arg2);
+        $resultat = $getres[0]['total'];
     }
     elseif (isset($arg1)){
-        $test = getRes($arg1);
-        echo "il y a ".$test[0]['total']." résultats.";
+        $getres = getRes($arg1);
+        $resultat = $getres[0]['total'];
     }
     else{
-        $test = getRes();
-        echo "il y a ".$test[0]['total']." résultats.";
+        $getres = getRes();
+        $resultat = $getres[0]['total'];
     }
+}
+else{
+    $resultat = "noreq";
 }
 
 // =============================== SECTION CARACTERISTIQUES===========================
@@ -77,14 +80,19 @@ if(isset($_POST) && !empty($_POST)){
     $lieux_situation_acc = getValues('lieux', 'situation_acc');
 
 // ==================== SECTION RESULTAT & DEPARTEMENTS ==============================
-    $resultat =  getRes("total");
     $caracteristiques_departement = getValues('caracteristiques', 'departement');
 
 
 // On charge le fichier voulus du dossier Views 
 $template = $twig->load('home.twig');
 
-// On envoi les données a la vue avec Twig
+// On envoie les données a la vue avec Twig
+// if(isset($resultat)){
+//     echo $template->render(array(
+        
+//     ));
+// }
+
 echo $template->render(array(
     "caracteristiques_lumiere" => $caracteristiques_lumiere,
     "caracteristiques_agglo" => $caracteristiques_agglo,
@@ -114,7 +122,9 @@ echo $template->render(array(
     "vehicules_point_choc" => $vehicules_point_choc,
     "vehicules_manoeuvre" => $vehicules_manoeuvre,
 
-    // "resultat" => $resultat
+    "resultat" => $resultat
     // "caracteristiques_departement" => $caracteristiques_departement,
-
 ));
+
+
+

@@ -72,7 +72,6 @@ function getRes($arg1 = "vehicules_categorie_v@%", $arg2 = "vehicules_categorie_
     return $valeur;
 }
 
-
 function getDepartements($table, $colonne){
     global $dbh;
 
