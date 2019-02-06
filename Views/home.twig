@@ -283,8 +283,8 @@
 {% endblock header %}
 
 {% block main %}
-    {% if resultat != "noreq" %}
-        <section class="container_resultat">
+{# Passer la section en display none tant que JS n'a pas de réponse de JAJAX #}
+            <section class="container_resultat">
             <div class="resultat_inner">
                 <div class="nombre">
                     <p>{{ resultat }}</p>
@@ -297,8 +297,6 @@
                 </div>
             </div>
         </section>
-    {% endif %}
-    
  
     <section class="container_carte">
        

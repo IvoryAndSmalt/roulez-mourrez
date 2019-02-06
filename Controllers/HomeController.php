@@ -3,51 +3,7 @@
 // Chargement de Twig
 require "LoaderTwig.php";
 
-// // Chargement du Model
-require('Models/Home.php');
-
-if(isset($_POST) && !empty($_POST)){
-    $i = 1;
-    foreach ($_POST as $key => $value) {
-        if($value !== ""){
-            $arg = "arg".$i;
-            $$arg = $key. "@". $value;
-            $i++;
-        }
-    }
-
-    // appeler la fonction avec les arguments donnés
-    if(isset($arg5)){
-        $getres = getRes($arg1, $arg2, $arg3, $arg4, $arg5);
-        $resultat = $getres[0]['total'];
-    }
-    elseif (isset($arg4)) {
-        $getres = getRes($arg1, $arg2, $arg3, $arg4);
-        $resultat = $getres[0]['total'];
-    }
-    elseif (isset($arg3)) {
-        $getres = getRes($arg1, $arg2, $arg3);
-        $resultat = $getres[0]['total'];
-    }
-    elseif (isset($arg2)) {
-        $getres = getRes($arg1, $arg2);
-        $resultat = $getres[0]['total'];
-    }
-    elseif (isset($arg1)){
-        $getres = getRes($arg1);
-        $resultat = $getres[0]['total'];
-    }
-    else{
-        $getres = getRes();
-        $resultat = $getres[0]['total'];
-        $caracteristiques_departement = getDepartements();
-        $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
-    }
-}
-else{
-    $resultat = "noreq";
-}
-
+require 'Models/Home.php';
 // =============================== SECTION CARACTERISTIQUES===========================
     $caracteristiques_lumiere = getValues('caracteristiques', 'lumiere');
     $caracteristiques_agglo = getValues('caracteristiques', 'agglo');
@@ -121,11 +77,5 @@ echo $template->render(array(
     "vehicules_obstacle_fixe" => $vehicules_obstacle_fixe,
     "vehicules_obstacle_mobile" => $vehicules_obstacle_mobile,
     "vehicules_point_choc" => $vehicules_point_choc,
-    "vehicules_manoeuvre" => $vehicules_manoeuvre,
-
-    "resultat" => $resultat
-    // "caracteristiques_departement" => $caracteristiques_departement,
+    "vehicules_manoeuvre" => $vehicules_manoeuvre
 ));
-
-
-
