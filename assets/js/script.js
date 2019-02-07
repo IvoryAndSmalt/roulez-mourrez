@@ -24,40 +24,15 @@ for (let i = 0; i < menuicons.length; i++) {
         }
     })
 }
-
 main.addEventListener('click', function(){
     for (let j = 0; j < menuul.length; j++) {
         menuul[j].style.display="none";
     }
 })
 
-var selects = document.getElementsByClassName("select");
-var nomDuChamp = document.getElementsByClassName("label");
-var contenuTableau = [];
+// ======FIN NAVIGATIOn=======
 
-for (let i = 0; i < selects.length; i++) {
 
-    selects[i].addEventListener('change', function(){
-
-        modifieTexte(i);
-
-    })
-}
-
-function modifieTexte(i) {
-    if (contenuTableau.indexOf(valeurChamp) === -1) {
-
-        // Ajoute les valeurs au tableau
-        contenuTableau.push(valeurChamp, valeurSelect);
-        
-        // Insère le tableau et enlève les , entre les cases
-        resultatSelection.innerHTML = contenuTableau.join(' ');
-
-    }
-    else if (contenuTableau.indexOf(valeurChamp) === 0) {
-        
-    }
-}
 
 
 // =========== SECTION DEPARTEMENTS =================
@@ -138,13 +113,13 @@ function rempliCarte() { // Couleurs en fonction du % obtenu
         for (var path of paths) {
             
             if (total < 30){
-                path.style = "yellow";
+                path.style = "rgb(181, 137, 0)"; // jaune
             }
             if (30 < total && total > 60){
-                path.style = "red";
+                path.style = "rgb(255, 123, 16)"; //orange
             }
             if (total > 60){
-                path.style= "black";
+                path.style= "black"; // rouge
             }
         }
     }
@@ -247,8 +222,23 @@ class LinkedPaths {
 let myselects = document.getElementsByClassName('select');
 let mylabels = document.getElementsByClassName('label');
 let tagsdiv = document.getElementsByClassName('tags')[0];
+let postselect = [];
 let tags = [];
 
+//Fonction qui remplit les tableaux
+function addToArray(){
+    let tags = [];
+    let postselect = {};
+    for (let i = 0; i < myselects.length; i++) {
+        if(myselects[i].value !== ""){
+            tags.push(mylabels[i].innerHTML+" "+myselects[i].value);
+            postselect[myselects[i].name] = myselects[i].value;
+        }
+    }
+    return [tags, postselect];
+}
+
+//Quand on change les select, on remplit les tableaux
 for (let i = 0; i < myselects.length; i++) {
     myselects[i].addEventListener('change', function(){
         tagsdiv.innerHTML = "";
@@ -259,10 +249,10 @@ for (let i = 0; i < myselects.length; i++) {
         else{
             tags = addToArray();
         }
-        for (let i = 0; i < tags.length; i++) {
+        for (let i = 0; i < tags[0].length; i++) {
             let mytag = document.createElement('p');
             mytag.classList.add("tag");
-            mytag.innerHTML = tags[i];
+            mytag.innerHTML = tags[0][i];
             tagsdiv.appendChild(mytag);
         }
     });
@@ -278,12 +268,45 @@ for (let i = 0; i < myselects.length; i++) {
 //     }
 // })
 
-// function addToArray(){
-//     let tags = [];
-//     for (let i = 0; i < myselects.length; i++) {
-//         if(myselects[i].value !== ""){
-//             tags.push(mylabels[i].innerHTML+" "+myselects[i].value);
-//         }
-//     }
-//     return tags;
-// }
+
+
+//AJAX
+let submit = document.getElementsByClassName('boutonEnvoyer');
+
+submit[0].addEventListener('click', function(e){
+    e.preventDefault();
+    console.log(tags[1])
+    for (var key in tags[1]) {
+        var value = tags[1][key];
+        console.log(key+","+value);
+    }
+
+    //Objet AJAX ici
+    var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", 'http://localhost/roulez-mourrez/Controllers/JajaxController.php', true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+        //on nomme les variables et on les passe dans la requete
+        let mesparametres = "";
+        for (var key in tags[1]) {
+            var value = tags[1][key];
+            mesparametres += ""+key+"='+'"+value+"'+'&";
+            console.log(key+","+value);
+        }
+
+        console.log("'"+mesparametres+"'");
+
+        xhttp.send("'"+mesparametres+"'");
+        // xhttp.send('ftp_url='+serverurl+'&ftpuser='+usernamepop+'&ftppassword='+passwordpop);
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = JSON.parse(this.responseText);
+                console.log(response);
+                //du code si ça a marché
+            }
+            else{
+                console.log("erreur");
+            }
+        }
+});
