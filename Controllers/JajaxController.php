@@ -109,10 +109,12 @@ function getDepartements($arg1 = "vehicules_categorie_v@%", $arg2 = "vehicules_c
 if(isset($_POST) && !empty($_POST)){
     $i = 1;
 
-    if($_POST['default'] == "default"){
+    if(isset($_POST['default']) && $_POST['default'] == "default"){
         $getres = getRes();
         $resultat = $getres[0]['total'];
+        
         $caracteristiques_departement = getDepartements();
+        
         $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
     }
     else{

@@ -249,7 +249,8 @@ submit[0].addEventListener('click', function(e){
 
         //vérifier combien d'éléments sont choisis. En fonction de ça, envoyer la requête avec le bon nombre de variables POST
         if(typeof tags[1] !== 'undefined'){
-            switch (tags[1].length) {
+
+                switch (tags[1].length) {
                 case 10:
                     
                 break;
@@ -267,7 +268,10 @@ submit[0].addEventListener('click', function(e){
                 break;
 
                 case 2:
-                
+                    xhttp.send(tags[1][0]+'='+tags[1][1]);
+                break;
+                case 0:
+                    xhttp.send('default=default');
                 break;
             }
         }
