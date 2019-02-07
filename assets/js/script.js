@@ -238,7 +238,9 @@ submit[0].addEventListener('click', function (e) {
             let deppourcent = [];
             let depcle = [];
             // remplacer 96 par le max +1
-            for (let i = 0; i < 96; i++) {
+            let length = response.departements.length;
+            console.log(length)
+            for (let i = 0; i < length; i++) {
                 deppourcent.push(((response.departements[i].totalDepartement / response.total) * 100).toFixed(2));
                 depcle.push(response.departements[i].departement);
             }
