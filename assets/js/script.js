@@ -30,11 +30,6 @@ main.addEventListener('click', function () {
     }
 })
 
-// ======FIN NAVIGATIOn=======
-
-
-
-
 // =========== SECTION DEPARTEMENTS =================
 
 var map = document.querySelector('#map');
@@ -83,28 +78,6 @@ links.forEach(function (link) {
 map.addEventListener('mouseleave', function () {
     activeArea();
 })
-
-
-/***************************************/
-/**************  NEW JaJAX  ************/
-/***************************************/
-
-// On créer une class qui contient les paths
-
-// class LinkedPaths {
-//     constructor($paths) { //propriété
-//         this.$paths = $paths //intancier le paths
-//     this.$placeholder = this.$target.firstElementChild // Pour récupérer la valeur par défaut on cible l'enfant
-
-//         this.onchange = this.onChange.bind(this), 500        //bind permet que This fera tjr référence à cette class 
-//         this.cache = {} // Pour éviter de recharger les choix déja fait
-
-//         //Puis écouteur qd changement, nouvelle méthode
-//         this.$paths.addEventListener('change', this.onChange)
-//     }
-// }
-
-
 
 //Fonction qui remplit les tableaux
 let myselects = document.getElementsByClassName('select');
@@ -175,20 +148,13 @@ function rempliCarte(pourcent, dep) { // Couleurs en fonction du % obtenu
             }
         }
     }
-    // if (total < 30){
-    //     path.style = "rgb(181, 137, 0)"; // jaune
-    // }
-    // if (30 < total && total > 60){
-    //     path.style = "rgb(255, 123, 16)"; //orange
-    // }
-    // if (total > 60){
-    //     path.style= "black"; // rouge
-    // }
 }
 
 //AJAX
 let submit = document.getElementsByClassName('boutonEnvoyer');
 let totalp = document.getElementsByClassName('total');
+let modal = document.getElementsByClassName('modal_chargement');
+modal[0].style.display = "none";
 
 submit[0].addEventListener('click', function (e) {
     e.preventDefault();
@@ -233,7 +199,7 @@ submit[0].addEventListener('click', function (e) {
     else {
         xhttp.send('default=default');
     }
-
+    modal[0].style.display = "block";
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var response = JSON.parse(this.responseText);
@@ -245,14 +211,12 @@ submit[0].addEventListener('click', function (e) {
             // remplacer 96 par le max +1
             let length = response.departements.length;
             console.log(length)
+            modal[0].style.display = "none";
             for (let i = 0; i < length; i++) {
                 deppourcent.push(((response.departements[i].totalDepartement / response.total) * 100).toFixed(2));
                 depcle.push(response.departements[i].departement);
             }
             rempliCarte(deppourcent, depcle);
-        }
-        else if (this.status !== 200) {
-            console.log("erreur");
         }
     }
 });
