@@ -131,25 +131,6 @@ for (let i = 0; i < myselects.length; i++) {
 //     }
 // })
 
-function rempliCarte(pourcent, dep) { // Couleurs en fonction du % obtenu 
-
-    //boucler sur chaque valeur % du tableau pourcent
-    for (let i = 0; i < pourcent.length; i++) {
-
-        if (paths[i].id == "dpt-" + dep[i]) {
-            if(pourcent[i] < 0.2){
-                paths[i].firstElementChild.style = "fill: rgb(181, 137, 0)";
-            }
-            else if(pourcent[i] >= 0.2 && pourcent[i] < 0.4){
-                paths[i].firstElementChild.style = "fill: rgb(255, 123, 16)";
-            }
-            else if(pourcent[i] >= 0.4){
-                paths[i].firstElementChild.style = "fill: rgb(255, 0, 0)";
-            }
-        }
-    }
-}
-
 //AJAX
 let submit = document.getElementsByClassName('boutonEnvoyer');
 let totalp = document.getElementsByClassName('total');
@@ -203,20 +184,58 @@ submit[0].addEventListener('click', function (e) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var response = JSON.parse(this.responseText);
-            console.log("response = ");
-            console.log(response.departements);
+            // console.log("response = ");
+            // console.log(response.departements);
             totalp[0].innerHTML = response.total;
             let deppourcent = [];
             let depcle = [];
-            // remplacer 96 par le max +1
             let length = response.departements.length;
-            console.log(length)
+
+            // console.log(length)
             modal[0].style.display = "none";
             for (let i = 0; i < length; i++) {
                 deppourcent.push(((response.departements[i].totalDepartement / response.total) * 100).toFixed(2));
                 depcle.push(response.departements[i].departement);
             }
-            rempliCarte(deppourcent, depcle);
+            deppourcent.sort();
+
+            let median = Math.floor(deppourcent.length/2);
+            let qone = Math.floor(deppourcent.length/4);
+            let qthree = Math.floor((deppourcent.length/4)+median);
+
+            rempliCarte(deppourcent, depcle, median, qone, qthree);
         }
     }
 });
+
+
+
+function rempliCarte(pourcent, dep, median, qone, qthree) {
+console.log("pourcent");
+console.log(pourcent);
+console.log('dep');
+console.log(dep);
+console.log('median');
+console.log(median);
+console.log("qone");
+console.log(qone);
+console.log("qthree");
+console.log(qthree);
+    for (let i = 0; i < pourcent.length; i++) {
+
+        if (paths[i].id == "dpt-" + dep[i]) {
+            if(pourcent[i] >= pourcent[0] && pourcent[i] < pourcent[qone]){
+                paths[i].firstElementChild.style = "fill: rgb(181, 137, 0)";
+            }
+            else if(pourcent[i] >= pourcent[qone] && pourcent[i] < pourcent[median]){
+                paths[i].firstElementChild.style = "fill: rgb(255, 123, 16)";
+            }
+            else if(pourcent[i] >= pourcent[median] && pourcent[i] < pourcent[qthree]){
+                paths[i].firstElementChild.style = "fill: rgb(255, 30, 30)";
+            }
+            else{
+                paths[i].firstElementChild.style = "fill: rgb(255, 0, 0)";
+            }
+        }
+    }
+}
