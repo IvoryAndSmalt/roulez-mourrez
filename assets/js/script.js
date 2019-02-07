@@ -244,11 +244,8 @@ submit[0].addEventListener('click', function (e) {
             }
             rempliCarte(deppourcent, depcle);
         }
-<<<<<<< HEAD
-=======
         else if (this.status !== 200) {
             console.log("erreur");
         }
     }
->>>>>>> e3aee7ef30a1e158cd873efb4eaa78bde5d0d494
 });
