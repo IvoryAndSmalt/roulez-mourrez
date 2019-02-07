@@ -84,102 +84,69 @@ map.addEventListener('mouseleave', function () {
     activeArea();
 })
 
-// Couleurs en fonction du % obtenu 
 
-var resultatObtenu = document.getElementsByClassName("resultatObtenu");
+
+var total = document.getElementsByClassName("total").innerHTML;
+var totalDepartement = document.getElementById("totalDepartement");
+console.dir(totalDepartement);
+
+var tableauResultatDpt = new Array;
+var tableauValeurDpt = new Array;
+
 var boutonEnvoyer = document.getElementsByClassName("boutonEnvoyer");
-var totalAccident=100000;
+
+
 
 boutonEnvoyer[0].addEventListener("click", function() { rempliCarte(); });
 
-function rempliCarte() { 
-    if (resultatObtenu !=0 && resultatObtenu != null) {
+
+function rempliCarte() { // Couleurs en fonction du % obtenu 
+    console.log("cc");
+    tableauResultatDpt.push(totalDepartement); // Tableau du total en fonction des départements
+    tableauValeurDpt.push(departement);
+    
+
+    for (let i = 0; i < tableauResultatDpt.length; i++) {
+
+        total += (tableauResultatDpt[i].value * 100)/total; 
+
         for (var path of paths) {
-            resultatObtenu += (resultatObtenu.value*100)/totalAccident; 
             
-            if (resultatObtenu < 30){
-                path.style = "yellow";
+            if (total < 30){
+                path.style = "rgb(181, 137, 0)"; // jaune
             }
-            if (30 < resultatObtenu && resultatObtenu > 60){
-                path.style = "red";
+            if (30 < total && total > 60){
+                path.style = "rgb(255, 123, 16)"; //orange
             }
-            if (resultatObtenu > 60){
-                path.style= "black";
+            if (total > 60){
+                path.style= "black"; // rouge
             }
         }
     }
 }
 
+
+
 /***************************************/
-/***************    AJAX    ************/
+/**************  NEW JaJAX  ************/
 /***************************************/
 
-// paths.forEach(function (path) {
-//     path.addEventListener('click', function (event) {
-//         event.preventDefault();
-//         ajax();
-//     })
-// })
+// On créer une class qui contient les paths
 
-// links.forEach(function (link) {
-//     link.addEventListener('click', function (event) {
-//         event.preventDefault();
-//         ajax();
-//     })
-// })
+class LinkedPaths {
+    constructor($paths) { //propriété
+        this.$paths = $paths //intancier le paths
+    this.$placeholder = this.$target.firstElementChild // Pour récupérer la valeur par défaut on cible l'enfant
+        
+        this.onchange = this.onChange.bind(this), 500        //bind permet que This fera tjr référence à cette class 
+        this.cache = {} // Pour éviter de recharger les choix déja fait
+        
+        //Puis écouteur qd changement, nouvelle méthode
+        this.$paths.addEventListener('change', this.onChange)
+    }
+}
 
-// //Création d'un objet pour permettre de faire des requêtes http pour échanger du XML
 
-// // var xhr = null; 
- 
-// if(window.XMLHttpRequest) // Firefox et autres
-//     xhr = new XMLHttpRequest(); 
-// else if(window.ActiveXObject){ // Internet Explorer 
-//     try {
-//             xhr = new ActiveXObject("Msxml2.XMLHTTP");
-//         } catch (e) {
-//             xhr = new ActiveXObject("Microsoft.XMLHTTP");
-//         }
-// }
-// else { // XMLHttpRequest non supporté par le navigateur 
-//     alert("Votre navigateur ne supporte pas les objets XMLHTTPRequest..."); 
-//     xhr = false;
-// }
-
-// // Méthode qui sera appelée sur le click du bouton
-
-// function ajax(){
-//     var xhr = getXhr()
-//     // On défini ce qu'on va faire quand on aura la réponse
-//     xhr.onreadystatechange = function(){
-//         // On ne fait quelque chose que si on a tout reçu et que le serveur est ok
-//         if(xhr.readyState == 4 && xhr.status == 200){
-
-//             contenuTableau = xhr.responseText;
-//         }
-//     }
-
-//     // Methode POST et appel de la page home pour exécuter les requêtes
-//     xhr.open("POST","home.php",true);
-
-//     // Changement du type MINE pour le POST
-//     xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-
-//     // Arguments
-//     xhr.send("variable1=truc&variable2=bidule");
-
-//     // ici, l'id de l'auteur
-//     sel = document.getElementById('auteur');
-//     idauteur = sel.options[sel.selectedIndex].value;
-//     xhr.send("idAuteur="+idauteur);
-// }
-
-// // let croixfermer = document.getElementById('');
-// let select_i = document.getElementById('');
-
-// croixfermer.addEventListener('click', function(){
-//     select_i.value="";
-// })
 
 //Fonction qui remplit les tableaux
 let myselects = document.getElementsByClassName('select');
@@ -235,6 +202,14 @@ for (let i = 0; i < myselects.length; i++) {
 //         myselects[i].value = "";
 //     }
 // })
+
+// // let croixfermer = document.getElementById('');
+// let select_i = document.getElementById('');
+
+// croixfermer.addEventListener('click', function(){
+//     select_i.value="";
+// })
+
 
 //AJAX
 let submit = document.getElementsByClassName('boutonEnvoyer');
