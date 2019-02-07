@@ -37,18 +37,8 @@ require 'Models/Home.php';
     $lieux_infra_r = getValues('lieux', 'infra_r');
     $lieux_situation_acc = getValues('lieux', 'situation_acc');
 
-// ==================== SECTION RESULTAT & DEPARTEMENTS ==============================
-
-
 // On charge le fichier voulus du dossier Views 
 $template = $twig->load('home.twig');
-
-// On envoie les données a la vue avec Twig
-// if(isset($resultat)){
-//     echo $template->render(array(
-        
-//     ));
-// }
 
 echo $template->render(array(
     "caracteristiques_lumiere" => $caracteristiques_lumiere,

@@ -1,7 +1,7 @@
 .menu{
     display:grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto 100px auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 100px;
 }
 
 #logo{
@@ -19,11 +19,27 @@
     min-width: 60px;
 }
 
-
+.send{
+	display: flex;
+	grid-column-start: 1;
+	grid-column-end: 4;
+}
 
 
 @media(min-width: 768px){
-	
+	.menu{
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto 100px;
+    }
+    #logo{
+        grid-column-end: 5;
+    }
+
+    .send{
+        grid-column-end: initial;
+        grid-column-start: initial;
+    }
 }
 
 .navigation{
