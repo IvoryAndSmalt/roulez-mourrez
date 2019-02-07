@@ -1,18 +1,16 @@
 {% extends 'template.twig' %}
 
-
 {% block style %}
 
 {% endblock style %}
-
 
 {% block header %}
 
     <section class="container_header">
         <form id="formulaire" action="index.php" method="POST" class="navigation">
             <ul class="menu">
-                <a id="logo" href="Home"><img src="assets/WIREFRAME/logo.png" alt="logo"/></a>
-                {# ============SECTION LIEUX ============== #}
+                <a id="logo" href="Home"><img src="assets/img/volant.png" alt="logo"/></a>
+                {# ========SECTION LIEUX ======== #}
                 <li>
                     <a class="menuicon" href="#">
                         <img src="assets/img/position.svg" width="30px" alt="icône de position"/>
@@ -269,22 +267,38 @@
                             </div>
                         </li>
                     </ul>
-                </li>  
+                </li>
+                <div class="send">
+                    <input type="submit" value="Rechercher avec ces critères" class="boutonEnvoyer">
+                </div>
             </ul>
+            {# =============  TAGS  ============= #}
             <div class="tags">
-<input type="submit" value="envoyer" class="boutonEnvoyer">
-            </div>       
+
+            </div>
         </form>
     </section>
+
+    
 {% endblock header %}
 
 {% block main %}
-    <section class="container_resultat">
-            <div class="resultat">
-                {{totalDepartement}}
-
+    {% if resultat != "noreq" %}
+        <section class="container_resultat">
+            <div class="resultat_inner">
+                <div class="nombre">
+                    <p class="total">{{ resultat }}</p>
+                    <p id="totalDepartement">{{totalDepartement}}</p>
+                </div>
+                <div class="comments">
+                    <h2>Accidents en 2017</h2>
+                    <em>selon les critères choisis</em>
+                    <p>Descendez pour voir une cartographie des résultats !</p>
+                </div>
             </div>
-    </section>
+        </section>
+    {% endif %}
+    
  
     <section class="container_carte">
        

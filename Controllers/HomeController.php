@@ -18,33 +18,46 @@ if(isset($_POST) && !empty($_POST)){
 
     // appeler la fonction avec les arguments donnés
     if(isset($arg5)){
-        $test = getRes($arg1, $arg2, $arg3, $arg4, $arg5);
-        echo "il y a ".$test[0]['total']." résultats.";
+        $getres = getRes($arg1, $arg2, $arg3, $arg4, $arg5);
+        $resultat = $getres[0]['total'];
+        $caracteristiques_departement = getDepartements($arg1, $arg2, $arg3, $arg4, $arg5);
+        $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
     }
     elseif (isset($arg4)) {
-        $test = getRes($arg1, $arg2, $arg3, $arg4);
-        echo "il y a ".$test[0]['total']." résultats.";
+        $getres = getRes($arg1, $arg2, $arg3, $arg4);
+        $resultat = $getres[0]['total'];
+        $caracteristiques_departement = getDepartements($arg1, $arg2, $arg3, $arg4);
+        $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
     }
     elseif (isset($arg3)) {
-        $test = getRes($arg1, $arg2, $arg3);
-        echo "il y a ".$test[0]['total']." résultats.";
+        $getres = getRes($arg1, $arg2, $arg3);
+        $resultat = $getres[0]['total'];
+        $caracteristiques_departement = getDepartements($arg1, $arg2, $arg3);
+        $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
     }
     elseif (isset($arg2)) {
-        $test = getRes($arg1, $arg2);
-        echo "il y a ".$test[0]['total']." résultats.";
+        $getres = getRes($arg1, $arg2);
+        $resultat = $getres[0]['total'];
+        $caracteristiques_departement = getDepartements($arg1, $arg2);
+        $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
     }
     elseif (isset($arg1)){
-        $test = getRes($arg1);
-        echo "il y a ".$test[0]['total']." résultats.";
+        $getres = getRes($arg1);
+        $resultat = $getres[0]['total'];
+        $caracteristiques_departement = getDepartements($arg1);
+        $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
     }
     else{
-        $test = getRes();
-        echo "il y a ".$test[0]['total']." résultats.";
+        $getres = getRes();
+        $resultat = $getres[0]['total'];
         $caracteristiques_departement = getDepartements();
-        
+        $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
         var_dump($caracteristiques_departement);
-        echo "il y a ".$caracteristiques_departement[0]['totalDepartement']." résulttfardrftrdts.";
+        var_dump($mesdepartements);
     }
+}
+else{
+    $resultat = "noreq";
 }
 
 // =============================== SECTION CARACTERISTIQUES===========================
@@ -83,12 +96,16 @@ if(isset($_POST) && !empty($_POST)){
 // ==================== SECTION RESULTAT & DEPARTEMENTS ==============================
 
 
-
-
 // On charge le fichier voulus du dossier Views 
 $template = $twig->load('home.twig');
 
-// On envoi les données a la vue avec Twig
+// On envoie les données a la vue avec Twig
+// if(isset($resultat)){
+//     echo $template->render(array(
+        
+//     ));
+// }
+
 echo $template->render(array(
     "caracteristiques_lumiere" => $caracteristiques_lumiere,
     "caracteristiques_agglo" => $caracteristiques_agglo,
@@ -117,4 +134,17 @@ echo $template->render(array(
     "vehicules_obstacle_mobile" => $vehicules_obstacle_mobile,
     "vehicules_point_choc" => $vehicules_point_choc,
     "vehicules_manoeuvre" => $vehicules_manoeuvre,
+
+    "resultat" => $resultat
+    // "caracteristiques_departement" => $caracteristiques_departement,
 ));
+
+
+
+//Méthode array map : un peu comme un foreach
+echo json_encode(array_map(function ($item){ // fct parametre($item et $items) + encodage du tableau en JSON
+    return [ //comment on retourne les informations
+        'label' => $item['departement'],
+        'value' => $item['totalDepartement']
+    ];
+}, $items));
