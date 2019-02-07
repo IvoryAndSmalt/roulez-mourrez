@@ -109,10 +109,12 @@ function getDepartements($arg1 = "vehicules_categorie_v@%", $arg2 = "vehicules_c
 if(isset($_POST) && !empty($_POST)){
     $i = 1;
 
-    if($_POST['default'] == "default"){
+    if(isset($_POST['default']) && $_POST['default'] == "default"){
         $getres = getRes();
         $resultat = $getres[0]['total'];
+        
         $caracteristiques_departement = getDepartements();
+        
         $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
     }
     else{
@@ -128,23 +130,42 @@ if(isset($_POST) && !empty($_POST)){
         if(isset($arg5)){
             $getres = getRes($arg1, $arg2, $arg3, $arg4, $arg5);
             $resultat = $getres[0]['total'];
+
+            $caracteristiques_departement = getDepartements($arg1, $arg2, $arg3, $arg4, $arg5);
+        
+            $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
         }
         elseif (isset($arg4)) {
             $getres = getRes($arg1, $arg2, $arg3, $arg4);
             $resultat = $getres[0]['total'];
+
+            $caracteristiques_departement = getDepartements($arg1, $arg2, $arg3, $arg4);
+        
+            $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
         }
         elseif (isset($arg3)) {
             $getres = getRes($arg1, $arg2, $arg3);
             $resultat = $getres[0]['total'];
+
+            $caracteristiques_departement = getDepartements($arg1, $arg2, $arg3);
+        
+            $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
         }
         elseif (isset($arg2)) {
             $getres = getRes($arg1, $arg2);
             $resultat = $getres[0]['total'];
+
+            $caracteristiques_departement = getDepartements($arg1, $arg2);
+        
+            $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
         }
         elseif (isset($arg1)){
-            var_dump($arg1);
             $getres = getRes($arg1);
             $resultat = $getres[0]['total'];
+
+            $caracteristiques_departement = getDepartements($arg1);
+        
+            $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
         }
     }
 }

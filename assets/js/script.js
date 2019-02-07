@@ -249,25 +249,29 @@ submit[0].addEventListener('click', function(e){
 
         //vérifier combien d'éléments sont choisis. En fonction de ça, envoyer la requête avec le bon nombre de variables POST
         if(typeof tags[1] !== 'undefined'){
-            switch (tags[1].length) {
+
+                switch (tags[1].length) {
                 case 10:
-                    
+                    xhttp.send(tags[1][0]+'='+tags[1][1]+"&"+tags[1][2]+'='+tags[1][3]+"&"+tags[1][4]+'='+tags[1][5]+"&"+tags[1][6]+'='+tags[1][7]+"&"+tags[1][8]+'='+tags[1][9]);
                 break;
 
                 case 8:
-                
+                    xhttp.send(tags[1][0]+'='+tags[1][1]+"&"+tags[1][2]+'='+tags[1][3]+"&"+tags[1][4]+'='+tags[1][5]+"&"+tags[1][6]+'='+tags[1][7]);
                 break;
 
                 case 6:
-                
+                    xhttp.send(tags[1][0]+'='+tags[1][1]+"&"+tags[1][2]+'='+tags[1][3]+"&"+tags[1][4]+'='+tags[1][5]);
                 break;
 
                 case 4:
-                
+                    xhttp.send(tags[1][0]+'='+tags[1][1]+"&"+tags[1][2]+'='+tags[1][3]);
                 break;
 
                 case 2:
-                
+                    xhttp.send(tags[1][0]+'='+tags[1][1]);
+                break;
+                case 0:
+                    xhttp.send('default=default');
                 break;
             }
         }
