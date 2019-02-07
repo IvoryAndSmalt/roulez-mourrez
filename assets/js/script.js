@@ -219,34 +219,35 @@ class LinkedPaths {
 //     select_i.value="";
 // })
 
+//Fonction qui remplit les tableaux
 let myselects = document.getElementsByClassName('select');
 let mylabels = document.getElementsByClassName('label');
-let tagsdiv = document.getElementsByClassName('tags')[0];
-let postselect = [];
-let tags = [];
 
-//Fonction qui remplit les tableaux
 function addToArray(){
     let tags = [];
-    let postselect = {};
+    let postselect = [];
     for (let i = 0; i < myselects.length; i++) {
         if(myselects[i].value !== ""){
             tags.push(mylabels[i].innerHTML+" "+myselects[i].value);
-            postselect[myselects[i].name] = myselects[i].value;
+            postselect.push(myselects[i].name);
+            postselect.push(myselects[i].value);
         }
     }
     return [tags, postselect];
 }
 
+let tagsdiv = document.getElementsByClassName('tags')[0];
+let tags = [[]];
 //Quand on change les select, on remplit les tableaux
 for (let i = 0; i < myselects.length; i++) {
     myselects[i].addEventListener('change', function(){
+
         tagsdiv.innerHTML = "";
-        if(tags.length >= 5){
+        if(tags[0].length >= 5){
             myselects[i].value = "";
             //afficher message d'erreur;
         }
-        else{
+        else {
             tags = addToArray();
         }
         for (let i = 0; i < tags[0].length; i++) {
@@ -254,6 +255,11 @@ for (let i = 0; i < myselects.length; i++) {
             mytag.classList.add("tag");
             mytag.innerHTML = tags[0][i];
             tagsdiv.appendChild(mytag);
+        }
+        console.log("select");
+        console.log(tags[1]);
+        for (let i = 0; i < tags[1].length; i++) {
+            console.log(tags[1][i]);
         }
     });
 }
@@ -268,44 +274,58 @@ for (let i = 0; i < myselects.length; i++) {
 //     }
 // })
 
-
-
 //AJAX
 let submit = document.getElementsByClassName('boutonEnvoyer');
 
 submit[0].addEventListener('click', function(e){
     e.preventDefault();
-    console.log(tags[1])
-    for (var key in tags[1]) {
-        var value = tags[1][key];
-        console.log(key+","+value);
-    }
-
+    
     //Objet AJAX ici
     var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", 'http://localhost/roulez-mourrez/Controllers/JajaxController.php', true);
+        xhttp.open("POST", 'Controllers/JajaxController.php', true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-        //on nomme les variables et on les passe dans la requete
-        let mesparametres = "";
-        for (var key in tags[1]) {
-            var value = tags[1][key];
-            mesparametres += ""+key+"='+'"+value+"'+'&";
-            console.log(key+","+value);
+        //vérifier combien d'éléments sont choisis. En fonction de ça, envoyer la requête avec le bon nombre de variables POST
+        if(typeof tags[1] !== 'undefined'){
+
+                switch (tags[1].length) {
+                case 10:
+                    xhttp.send(tags[1][0]+'='+tags[1][1]+"&"+tags[1][2]+'='+tags[1][3]+"&"+tags[1][4]+'='+tags[1][5]+"&"+tags[1][6]+'='+tags[1][7]+"&"+tags[1][8]+'='+tags[1][9]);
+                break;
+
+                case 8:
+                    xhttp.send(tags[1][0]+'='+tags[1][1]+"&"+tags[1][2]+'='+tags[1][3]+"&"+tags[1][4]+'='+tags[1][5]+"&"+tags[1][6]+'='+tags[1][7]);
+                break;
+
+                case 6:
+                    xhttp.send(tags[1][0]+'='+tags[1][1]+"&"+tags[1][2]+'='+tags[1][3]+"&"+tags[1][4]+'='+tags[1][5]);
+                break;
+
+                case 4:
+                    xhttp.send(tags[1][0]+'='+tags[1][1]+"&"+tags[1][2]+'='+tags[1][3]);
+                break;
+
+                case 2:
+                    xhttp.send(tags[1][0]+'='+tags[1][1]);
+                break;
+                case 0:
+                    xhttp.send('default=default');
+                break;
+            }
         }
-
-        console.log("'"+mesparametres+"'");
-
-        xhttp.send("'"+mesparametres+"'");
-        // xhttp.send('ftp_url='+serverurl+'&ftpuser='+usernamepop+'&ftppassword='+passwordpop);
+        else{
+            xhttp.send('default=default');
+        }
+        // ('ftp_url='+serverurl+'&ftpuser='+usernamepop+'&ftppassword='+passwordpop)
 
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var response = JSON.parse(this.responseText);
+                console.log("response = ");
                 console.log(response);
                 //du code si ça a marché
             }
-            else{
+            else if(this.status !== 200){
                 console.log("erreur");
             }
         }
