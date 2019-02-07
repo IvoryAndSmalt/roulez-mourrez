@@ -86,66 +86,6 @@ map.addEventListener('mouseleave', function () {
 
 
 
-var total = document.getElementsByClassName("total").innerHTML;
-var totalDepartement = document.getElementById("totalDepartement");
-console.dir(totalDepartement);
-
-var tableauResultatDpt = new Array;
-var tableauValeurDpt = new Array;
-
-var boutonEnvoyer = document.getElementsByClassName("boutonEnvoyer");
-
-
-
-boutonEnvoyer[0].addEventListener("click", function() { rempliCarte(); });
-
-
-function rempliCarte() { // Couleurs en fonction du % obtenu 
-    console.log("cc");
-    tableauResultatDpt.push(totalDepartement); // Tableau du total en fonction des départements
-    tableauValeurDpt.push(departement);
-    
-
-    for (let i = 0; i < tableauResultatDpt.length; i++) {
-
-        total += (tableauResultatDpt[i].value * 100)/total; 
-
-        for (var path of paths) {
-            
-            if (total < 30){
-                path.style = "rgb(181, 137, 0)"; // jaune
-            }
-            if (30 < total && total > 60){
-                path.style = "rgb(255, 123, 16)"; //orange
-            }
-            if (total > 60){
-                path.style= "black"; // rouge
-            }
-        }
-    }
-}
-
-
-
-/***************************************/
-/**************  NEW JaJAX  ************/
-/***************************************/
-
-// On créer une class qui contient les paths
-
-class LinkedPaths {
-    constructor($paths) { //propriété
-        this.$paths = $paths //intancier le paths
-    this.$placeholder = this.$target.firstElementChild // Pour récupérer la valeur par défaut on cible l'enfant
-        
-        this.onchange = this.onChange.bind(this), 500        //bind permet que This fera tjr référence à cette class 
-        this.cache = {} // Pour éviter de recharger les choix déja fait
-        
-        //Puis écouteur qd changement, nouvelle méthode
-        this.$paths.addEventListener('change', this.onChange)
-    }
-}
-
 
 
 //Fonction qui remplit les tableaux
