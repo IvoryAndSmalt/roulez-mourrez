@@ -85,6 +85,24 @@ map.addEventListener('mouseleave', function () {
 })
 
 
+/***************************************/
+/**************  NEW JaJAX  ************/
+/***************************************/
+
+// On créer une class qui contient les paths
+
+// class LinkedPaths {
+//     constructor($paths) { //propriété
+//         this.$paths = $paths //intancier le paths
+//     this.$placeholder = this.$target.firstElementChild // Pour récupérer la valeur par défaut on cible l'enfant
+        
+//         this.onchange = this.onChange.bind(this), 500        //bind permet que This fera tjr référence à cette class 
+//         this.cache = {} // Pour éviter de recharger les choix déja fait
+        
+//         //Puis écouteur qd changement, nouvelle méthode
+//         this.$paths.addEventListener('change', this.onChange)
+//     }
+// }
 
 
 
@@ -125,10 +143,7 @@ for (let i = 0; i < myselects.length; i++) {
             mytag.innerHTML = tags[0][i];
             tagsdiv.appendChild(mytag);
         }
-        console.log("select");
-        console.log(tags[1]);
         for (let i = 0; i < tags[1].length; i++) {
-            console.log(tags[1][i]);
         }
     });
 }
@@ -143,16 +158,9 @@ for (let i = 0; i < myselects.length; i++) {
 //     }
 // })
 
-// // let croixfermer = document.getElementById('');
-// let select_i = document.getElementById('');
-
-// croixfermer.addEventListener('click', function(){
-//     select_i.value="";
-// })
-
-
 //AJAX
 let submit = document.getElementsByClassName('boutonEnvoyer');
+let totalp = document.getElementsByClassName('total');
 
 submit[0].addEventListener('click', function(e){
     e.preventDefault();
@@ -162,7 +170,6 @@ submit[0].addEventListener('click', function(e){
         xhttp.open("POST", 'Controllers/JajaxController.php', true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-        //vérifier combien d'éléments sont choisis. En fonction de ça, envoyer la requête avec le bon nombre de variables POST
         if(typeof tags[1] !== 'undefined'){
 
                 switch (tags[1].length) {
@@ -193,13 +200,13 @@ submit[0].addEventListener('click', function(e){
         else{
             xhttp.send('default=default');
         }
-        // ('ftp_url='+serverurl+'&ftpuser='+usernamepop+'&ftppassword='+passwordpop)
 
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var response = JSON.parse(this.responseText);
                 console.log("response = ");
                 console.log(response);
+                totalp[0].innerHTML = response.total;
                 //du code si ça a marché
             }
             else if(this.status !== 200){

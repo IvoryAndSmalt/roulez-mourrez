@@ -102,7 +102,7 @@ function getDepartements($arg1 = "vehicules_categorie_v@%", $arg2 = "vehicules_c
 
     $valeur = $dbh->prepare($sql);
     $valeur->execute([$valeur1, $valeur2, $valeur3, $valeur4, $valeur5]);
-    $valeur = $valeur->fetchAll(PDO::FETCH_ASSOC); 
+    $valeur = $valeur->fetchAll(PDO::FETCH_ASSOC);
     return $valeur;
 }
 
@@ -113,9 +113,7 @@ if(isset($_POST) && !empty($_POST)){
         $getres = getRes();
         $resultat = $getres[0]['total'];
         
-        $caracteristiques_departement = getDepartements();
-        
-        $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
+        $mesdepartements = getDepartements();
     }
     else{
         foreach ($_POST as $key => $value) {
@@ -131,49 +129,36 @@ if(isset($_POST) && !empty($_POST)){
             $getres = getRes($arg1, $arg2, $arg3, $arg4, $arg5);
             $resultat = $getres[0]['total'];
 
-            $caracteristiques_departement = getDepartements($arg1, $arg2, $arg3, $arg4, $arg5);
-        
-            $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
-
-            echo $caracteristiques_departement[0]['totalDepartement'];
-
+            $mesdepartements = getDepartements($arg1, $arg2, $arg3, $arg4, $arg5);
         }
         elseif (isset($arg4)) {
             $getres = getRes($arg1, $arg2, $arg3, $arg4);
             $resultat = $getres[0]['total'];
 
-            $caracteristiques_departement = getDepartements($arg1, $arg2, $arg3, $arg4);
-        
-            $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
-
-            echo $caracteristiques_departement[0]['totalDepartement'];
+            $mesdepartements = getDepartements($arg1, $arg2, $arg3, $arg4);
         }
         elseif (isset($arg3)) {
             $getres = getRes($arg1, $arg2, $arg3);
             $resultat = $getres[0]['total'];
 
-            $caracteristiques_departement = getDepartements($arg1, $arg2, $arg3);
-        
-            $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
+            $mesdepartements = getDepartements($arg1, $arg2, $arg3);
         }
         elseif (isset($arg2)) {
             $getres = getRes($arg1, $arg2);
             $resultat = $getres[0]['total'];
 
-            $caracteristiques_departement = getDepartements($arg1, $arg2);
-        
-            $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
+            $mesdepartements = getDepartements($arg1, $arg2);
         }
         elseif (isset($arg1)){
             $getres = getRes($arg1);
             $resultat = $getres[0]['total'];
 
-            $caracteristiques_departement = getDepartements($arg1);
-        
-            $mesdepartements = $caracteristiques_departement[0]['totalDepartement'];
+            $mesdepartements = getDepartements($arg1);
         }
     }
 }
+
+
 
 else{
     $resultat = "noreq";
