@@ -193,6 +193,11 @@ let totalp = document.getElementsByClassName('total');
 submit[0].addEventListener('click', function (e) {
     e.preventDefault();
 
+    //clear les menus
+    for (let j = 0; j < menuul.length; j++) {
+        menuul[j].style.display = "none";
+    }
+
     //Objet AJAX ici
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", 'Controllers/JajaxController.php', true);
