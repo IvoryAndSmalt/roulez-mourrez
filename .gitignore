@@ -5,3 +5,4 @@ README.md
 service-worker.js
 composer.json
 composer.lock
+Controllers/JajaxController.php
