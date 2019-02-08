@@ -158,8 +158,6 @@ if(isset($_POST) && !empty($_POST)){
     }
 }
 
-
-
 else{
     $resultat = "noreq";
 }
