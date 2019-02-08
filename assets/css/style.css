@@ -191,7 +191,10 @@ main{
     font-family: 'Roboto', serif;
     font-size: 1em;
 }
-
+/* =========== SECTION LEGENDE ============= */
+#legende {
+	text-align: right;
+}
 
 /* =========== SECTION RESULTAT ============= */
 
