@@ -210,21 +210,33 @@ submit[0].addEventListener('click', function (e) {
 });
 
 //Fonction qui remplit la carte en fonction du tableau des pourcentages et des seuils basés sur la médiane/quartiles
-function rempliCarte(pourcent, dep, median, qone, qthree) {
-    for (let i = 0; i < pourcent.length; i++) {
+let criteres = document.getElementsByClassName('critere');
+let blocCouleur = document.getElementsByClassName('blocCouleur');
+blocCouleur[0].style.background = "rgb(186, 241, 255)";
+blocCouleur[1].style.background = "rgb(5, 178, 220)";
+blocCouleur[2].style.background = "rgb(8, 124, 167)";
+blocCouleur[3].style.background = "rgb(8, 61, 119)";
 
+function rempliCarte(pourcent, dep, median, qone, qthree) {
+
+    for (let i = 0; i < pourcent.length; i++) {
+        criteres[0].innerHTML = "< "+pourcent[qone]+"%";
+        criteres[1].innerHTML = "de "+pourcent[qone]+"% à "+pourcent[median]+"%";
+        criteres[2].innerHTML = "de "+pourcent[median]+"% à "+pourcent[qthree]+"%";
+        criteres[3].innerHTML = "> "+pourcent[qthree]+"%";
+        console.log(pourcent.length);
         if (paths[i].id == "dpt-" + dep[i]) {
             if(pourcent[i] >= pourcent[0] && pourcent[i] < pourcent[qone]){
-                paths[i].firstElementChild.style = "fill: rgb(150,150,150)";
+                paths[i].firstElementChild.style = "fill: rgb(186, 241, 255)";
             }
             else if(pourcent[i] >= pourcent[qone] && pourcent[i] < pourcent[median]){
-                paths[i].firstElementChild.style = "fill: rgb(181, 137, 0)";
+                paths[i].firstElementChild.style = "fill: rgb(5, 178, 220)";
             }
             else if(pourcent[i] >= pourcent[median] && pourcent[i] < pourcent[qthree]){
-                paths[i].firstElementChild.style = "fill: rgb(255, 123, 16)";
+                paths[i].firstElementChild.style = "fill: rgb(8, 124, 167)";
             }
             else{
-                paths[i].firstElementChild.style = "fill: rgb(255, 0, 0)";
+                paths[i].firstElementChild.style = "fill: rgb(8, 61, 119)";
             }
         }
     }

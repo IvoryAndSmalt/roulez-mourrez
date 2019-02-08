@@ -94,7 +94,7 @@ header{
 
 .boutonEnvoyer:hover{
 	background: rgb(5, 178, 220);
-	cursor:pointer;
+	cursor: pointer;
 }
 
 /* Style Sous Menu */
@@ -195,7 +195,39 @@ main{
     font-family: 'Roboto', serif;
     font-size: 1em;
 }
+/* =========== SECTION LEGENDE ============= */
+.blocCouleur {
+	height: 20px;
+	width: 20px;
+	background-color: black;
+}
+.legendeCritere {
+	width: 200px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 5px;
+}
 
+.critere {
+	margin-left:10px;
+}
+
+#legende {
+	display: flex;
+	justify-content: space-around;
+	margin: 30px auto 0 auto;
+	width: 200px;
+	flex-wrap: wrap;
+}
+
+@media(min-width: 768px){
+	#legende {
+		width: 200px;
+		padding: 5px;
+		margin: -20px 0 0 0;
+	}
+}
 
 /* =========== SECTION RESULTAT ============= */
 
