@@ -31,7 +31,6 @@ main.addEventListener('click', function () {
 })
 
 
-
 // =========== SECTION DEPARTEMENTS =================
 
 var map = document.querySelector('#map');
@@ -136,8 +135,11 @@ for (let i = 0; i < myselects.length; i++) {
 //AJAX
 let submit = document.getElementsByClassName('boutonEnvoyer');
 let totalp = document.getElementsByClassName('total');
+let container_resultat = document.getElementsByClassName('container_resultat')[0];
+container_resultat.style.display = "none";
 let modal = document.getElementsByClassName('modal_chargement');
 modal[0].style.display = "none";
+
 
 submit[0].addEventListener('click', function (e) {
     e.preventDefault();
@@ -153,7 +155,7 @@ submit[0].addEventListener('click', function (e) {
     xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
     if (typeof tags[1] !== 'undefined') {
-
+        //switch pour envoyer la requête en fonction du nombre d'arg
         switch (tags[1].length) {
             case 10:
                 xhttp.send(tags[1][0] + '=' + tags[1][1] + "&" + tags[1][2] + '=' + tags[1][3] + "&" + tags[1][4] + '=' + tags[1][5] + "&" + tags[1][6] + '=' + tags[1][7] + "&" + tags[1][8] + '=' + tags[1][9]);
@@ -162,15 +164,12 @@ submit[0].addEventListener('click', function (e) {
             case 8:
                 xhttp.send(tags[1][0] + '=' + tags[1][1] + "&" + tags[1][2] + '=' + tags[1][3] + "&" + tags[1][4] + '=' + tags[1][5] + "&" + tags[1][6] + '=' + tags[1][7]);
                 break;
-
             case 6:
                 xhttp.send(tags[1][0] + '=' + tags[1][1] + "&" + tags[1][2] + '=' + tags[1][3] + "&" + tags[1][4] + '=' + tags[1][5]);
                 break;
-
             case 4:
                 xhttp.send(tags[1][0] + '=' + tags[1][1] + "&" + tags[1][2] + '=' + tags[1][3]);
                 break;
-
             case 2:
                 xhttp.send(tags[1][0] + '=' + tags[1][1]);
                 break;
@@ -186,58 +185,54 @@ submit[0].addEventListener('click', function (e) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var response = JSON.parse(this.responseText);
-            // console.log("response = ");
-            // console.log(response.departements);
             totalp[0].innerHTML = response.total;
+            container_resultat.style.display = "block";
+            modal[0].style.display = "none";
+            
+            //Construction des medianes/quartiles
             let deppourcent = [];
             let depcle = [];
-            let length = response.departements.length;
-
-            // console.log(length)
-            modal[0].style.display = "none";
-            for (let i = 0; i < length; i++) {
+            for (let i = 0; i < response.departements.length; i++) {
                 deppourcent.push(((response.departements[i].totalDepartement / response.total) * 100).toFixed(2));
                 depcle.push(response.departements[i].departement);
             }
-            deppourcent.sort();
 
+            //construction de la médiane et des quartiles pour le remplissage, puis remplissage
+            deppourcent.sort();
             let median = Math.floor(deppourcent.length/2);
             let qone = Math.floor(deppourcent.length/4);
             let qthree = Math.floor((deppourcent.length/4)+median);
-
+            //remet la carte dans son état d'origine avant de la colorier
+            clearCarte();
             rempliCarte(deppourcent, depcle, median, qone, qthree);
         }
     }
 });
 
-
-
+//Fonction qui remplit la carte en fonction du tableau des pourcentages et des seuils basés sur la médiane/quartiles
 function rempliCarte(pourcent, dep, median, qone, qthree) {
-console.log("pourcent");
-console.log(pourcent);
-console.log('dep');
-console.log(dep);
-console.log('median');
-console.log(median);
-console.log("qone");
-console.log(qone);
-console.log("qthree");
-console.log(qthree);
     for (let i = 0; i < pourcent.length; i++) {
 
         if (paths[i].id == "dpt-" + dep[i]) {
             if(pourcent[i] >= pourcent[0] && pourcent[i] < pourcent[qone]){
-                paths[i].firstElementChild.style = "fill: rgb(181, 137, 0)";
+                paths[i].firstElementChild.style = "fill: rgb(150,150,150)";
             }
             else if(pourcent[i] >= pourcent[qone] && pourcent[i] < pourcent[median]){
-                paths[i].firstElementChild.style = "fill: rgb(255, 123, 16)";
+                paths[i].firstElementChild.style = "fill: rgb(181, 137, 0)";
             }
             else if(pourcent[i] >= pourcent[median] && pourcent[i] < pourcent[qthree]){
-                paths[i].firstElementChild.style = "fill: rgb(255, 30, 30)";
+                paths[i].firstElementChild.style = "fill: rgb(255, 123, 16)";
             }
             else{
                 paths[i].firstElementChild.style = "fill: rgb(255, 0, 0)";
             }
         }
+    }
+}
+
+//Fonction qui remet la carte à 0 avant de la colorier
+function clearCarte(){
+    for (let i = 0; i < paths.length; i++) {
+        paths[i].firstElementChild.style = "fill: rgb(151, 205, 226);";
     }
 }
