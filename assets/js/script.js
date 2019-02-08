@@ -139,6 +139,7 @@ let container_resultat = document.getElementsByClassName('container_resultat')[0
 container_resultat.style.display = "none";
 let modal = document.getElementsByClassName('modal_chargement');
 modal[0].style.display = "none";
+// totalp[0].style.display = "block";
 
 submit[0].addEventListener('click', function (e) {
     e.preventDefault();

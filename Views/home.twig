@@ -288,6 +288,14 @@
 {% endblock header %}
 
 {% block main %}
+{# Passer la section en display none tant que JS n'a pas de réponse de JAJAX #}
+    <section class="container_resultat">
+        <div class="resultat_inner">
+            <div class="nombre"> 
+                Selon les critères choisis,  <p class="total"></p>  accidents ont eu lieu en 2017.
+            </div>
+        </div>
+    </section>
        
     <div class="map" id="map">
 
@@ -688,19 +696,6 @@
 {% endblock main %}
 
 {% block footer %}
-
-{# Passer la section en display none tant que JS n'a pas de réponse de JAJAX #}
-        <section class="container_resultat">
-            <div class="resultat_inner">
-                <div class="nombre">
-                    <p class="total"></p>
-                </div>
-                <div class="comments">
-                    <h2>Accidents en 2017</h2>
-                    <em>selon les critères choisis</em>
-                </div>
-            </div>
-        </section>
 
 {% endblock footer %}
 
