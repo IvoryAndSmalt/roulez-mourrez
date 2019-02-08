@@ -30,6 +30,8 @@ main.addEventListener('click', function () {
     }
 })
 
+
+
 // =========== SECTION DEPARTEMENTS =================
 
 var map = document.querySelector('#map');

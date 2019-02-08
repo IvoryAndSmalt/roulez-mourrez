@@ -39,7 +39,6 @@
 /******* HEADER ******/
 header{
     background-color: rgb(0, 43, 54);
-    background-size: cover;
 	width: 99%;
 	margin: 0.5% auto;
 	border-radius: 5px 5px 5px 5px;
@@ -51,16 +50,11 @@ header{
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
-#logo img{
-	width: 30%;
-	height: auto;
-}
-
 /* ==================== NAVIGATION =============== */
 
 .navigation {
     max-width: 100%;
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 .menu {
@@ -69,12 +63,19 @@ header{
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
     
 }
+.navigation li {
+	display: flex;
+	justify-content: center;
+	align-items:  center;
+}
 
 .navigation ul li a {
     display: flex;
-	height: 100%;
+	height: 50px;
+	/* margin-top: 48px; */
 	align-self: center;
 	justify-content: center;
+	/* border: solid 1px rgb(4, 39, 47); */
 }
 
 .boutonEnvoyer{
@@ -101,7 +102,7 @@ header{
 	border-radius: 5px;
 	left: 0;
 	color: white;
-	background: black;
+	background-color: black;
 	padding-bottom: 15px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	width: 99%;
@@ -191,11 +192,13 @@ main{
     font-size: 1em;
 }
 
+
 /* =========== SECTION RESULTAT ============= */
 
 .container_resultat{
 	width: 99%;
-	background: lightgray;
+	height: 50px;
+	background: black;
 	margin: 0 auto 0.5% auto;
 	border-radius: 5px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -203,6 +206,7 @@ main{
 
 .resultat_inner{
 	width: 100%;
+	height: 50px;
 	margin: auto;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 700;
@@ -258,11 +262,12 @@ main{
 
 .map--image svg {
     width: 100%;
-    height: 600px;
+    height: 500px;
 }
 
 .map--image path{
-    fill: rgb(151, 205, 226);
+	/* fill: rgb(151, 205, 226); */
+	fill: lightgray;
     stroke: #FFF; /*Permet de séparer les départements*/
     stroke-width: 1px;
     transition: fill 0.3s;
@@ -274,7 +279,7 @@ main{
 
 
 .map--list{
-	height: 600px;
+	height: 450px;
 }
 
 ::-webkit-scrollbar {									/* Scrollbars */
