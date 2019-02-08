@@ -31,7 +31,6 @@ main.addEventListener('click', function () {
 })
 
 
-
 // =========== SECTION DEPARTEMENTS =================
 
 var map = document.querySelector('#map');
@@ -208,7 +207,6 @@ submit[0].addEventListener('click', function (e) {
         }
     }
 });
-
 
 //Fonction qui remplit la carte en fonction du tableau des pourcentages et des seuils basés sur la médiane/quartiles
 function rempliCarte(pourcent, dep, median, qone, qthree) {

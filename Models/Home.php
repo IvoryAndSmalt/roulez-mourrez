@@ -114,14 +114,6 @@ function getDepartements($arg1 = "vehicules_categorie_v@%", $arg2 = "vehicules_c
     
     GROUP BY caracteristiques.departement;';
 
-    // echo $sql."<br>";
-    // echo "<br>Recherche avec :<br>";
-    // echo $table1.".".$colonne1."=>".$valeur1."<br>";
-    // echo $table2.".".$colonne2."=>".$valeur2."<br>";
-    // echo $table3.".".$colonne3."=>".$valeur3."<br>";
-    // echo $table4.".".$colonne4."=>".$valeur4."<br>";
-    // echo $table5.".".$colonne5."=>".$valeur5."<br>";
-
     $valeur = $dbh->prepare($sql);
 
     $valeur->execute([$valeur1, $valeur2, $valeur3, $valeur4, $valeur5]);
