@@ -81,3 +81,23 @@
     align-items:center;
     text-align:center;
 }
+
+
+@media(max-width: 768px){
+
+    .map {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .map--image svg {
+        width: 400px;
+        height: auto;
+    }
+
+    .map--list{
+        padding-top: 30px;
+        width: 300px;
+        height: 300px;
+    }
+}
