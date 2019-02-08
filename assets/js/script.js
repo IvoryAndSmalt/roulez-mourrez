@@ -133,6 +133,7 @@ for (let i = 0; i < myselects.length; i++) {
 // })
 
 //AJAX
+let legende = document.getElementById('legende');
 let submit = document.getElementsByClassName('boutonEnvoyer');
 let totalp = document.getElementsByClassName('total');
 let container_resultat = document.getElementsByClassName('container_resultat')[0];
@@ -182,13 +183,16 @@ submit[0].addEventListener('click', function (e) {
         xhttp.send('default=default');
     }
     modal[0].style.display = "block";
+    legende.style.display = "none";
+
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var response = JSON.parse(this.responseText);
             totalp[0].innerHTML = response.total;
             container_resultat.style.display = "block";
             modal[0].style.display = "none";
-            
+            legende.style.display = "block";
+
             //Construction des medianes/quartiles
             let deppourcent = [];
             let depcle = [];
