@@ -138,6 +138,7 @@ let submit = document.getElementsByClassName('boutonEnvoyer');
 let totalp = document.getElementsByClassName('total');
 let modal = document.getElementsByClassName('modal_chargement');
 modal[0].style.display = "none";
+// totalp[0].style.display = "block";
 
 submit[0].addEventListener('click', function (e) {
     e.preventDefault();

@@ -195,16 +195,16 @@ main{
 
 /* =========== SECTION RESULTAT ============= */
 
-.container_resultat{
+/* .container_resultat{
 	width: 99%;
 	height: 50px;
 	background: black;
 	margin: 0 auto 0.5% auto;
 	border-radius: 5px;
 	box-shadow: 0 1px 3px rgba(37, 37, 37, 0.849), 0 1px 2px rgba(0,0,0,0.24);
-}
+} */
 
-.resultat_inner{
+/* .resultat_inner{
 	width: 100%;
 	height: 50px;
 	margin: auto;
@@ -212,26 +212,33 @@ main{
 	font-weight: 700;
 	display:flex;
 	justify-content: space-between;
-}
+} */
 
-.resultat_inner div{
+/* .resultat_inner div{
 	width: 50%;
 	padding: 10px 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
+} */
 
 .nombre{
-	/* background: darkgrey; */
-	background-color: #002B36;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	text-align: center;
+	font-weight: 700;
 }
 
-.nombre p{
-	font-size: 3em;
+.total{
+	display: block;
+	position: absolute;
+	font-size: 2em;
+	padding-left: 2px; 
+	padding-right: 2px;
 }
 
-.comments{
+/* .comments{
 	text-align: center;
 	background: #002B36;
 	flex-direction: column;
@@ -256,7 +263,7 @@ main{
 
 .comments p{
 	font-size: 1.2em;
-}
+} */
 
 /* =========== SECTION DEPARTEMENTS ============ */
 
@@ -284,23 +291,24 @@ main{
 	height: 450px;
 	overflow-y:scroll;
 	scrollbar-color: rgb(6, 42, 56) lightgray;
+	scrollbar-width: thin;
 }
 
 
 .map--list::-webkit-scrollbar {
-    width: 15px;
-    height: 15px;
+    width: 7px;
+    height: 7px;
 }
 
 .map--list::-webkit-scrollbar-track-piece  {
 	background-color: lightgray;
-	border-radius: 5px;
+	border-radius: 2px;
 }
 
 .map--list::-webkit-scrollbar-thumb:vertical {
     height: 30px;
 	background-color: rgb(6, 42, 56);
-	border-radius: 5px;
+	border-radius: 2px;
 }
 
 
