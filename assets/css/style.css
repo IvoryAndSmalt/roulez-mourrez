@@ -38,7 +38,7 @@
 
 /******* HEADER ******/
 header{
-    background-color: rgb(0, 43, 54);
+    background-color: rgb(8, 61, 119);
 	width: 99%;
 	margin: 0.5% auto;
 	border-radius: 5px 5px 5px 5px;
@@ -81,15 +81,19 @@ header{
 
 .boutonEnvoyer{
 	font-family: 'Roboto', sans-serif;
-	font-weight: 700;
+	font-weight: 500;
+	font-size: 1em;
 	display: block;
 	margin: auto;
 	padding: 10px 20px;
 	border-radius: 3px;
+	border: none;
+	background: rgb(8, 124, 167);
+	color: white;
 }
 
 .boutonEnvoyer:hover{
-	background: lavender;
+	background: rgb(5, 178, 220);
 	cursor:pointer;
 }
 
@@ -102,11 +106,12 @@ header{
 	border-radius: 5px;
 	left: 0;
 	color: white;
-	background-color: black;
+	background-color: rgb(5, 178, 220);
 	padding-bottom: 15px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	width: 99%;
 	left: 0.5%;
+	margin-top: 0.5%;
 	display: none;
 }
 
@@ -152,23 +157,21 @@ header{
 
 .tags{
 	min-height: 40px;
-	/* background: grey; */
-	background-color:black;
+	background-color:rgb(5, 178, 220);
 	border-radius: 0 0 5px 5px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	padding: 5px;
 }
 
 .tags p:nth-child(2n+0){
-	background-color: rgb(0, 43, 54);
+	background-color: rgb(0,166,0);
 	/* background: #3772ff; */
 }
 .tags p:nth-child(2n+1){
 	/* background: #c2a62b; */
-	background-color: rgb(181, 137, 0);
+	background-color: #ffb300;;
 }
 .tags p:nth-child(3){
 	background: rgb(205, 32, 31);
@@ -177,7 +180,7 @@ header{
 .tag{
 	padding: 10px 15px;
 	border-radius: 5px;
-	margin: 0 5px;
+	margin: 5px 5px;
 	text-align: center;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	width: 90%;
@@ -196,44 +199,43 @@ main{
 
 /* =========== SECTION RESULTAT ============= */
 
-/* .container_resultat{
+.container_resultat{
+	display: block;
 	width: 99%;
-	height: 50px;
-	background: black;
-	margin: 0 auto 0.5% auto;
+	margin: 0 auto;
 	border-radius: 5px;
-	box-shadow: 0 1px 3px rgba(37, 37, 37, 0.849), 0 1px 2px rgba(0,0,0,0.24);
-} */
+	background: rgb(186, 241, 255);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	margin-bottom: 0.5%;
+}
 
-/* .resultat_inner{
+.resultat_inner{
 	width: 100%;
-	height: 50px;
 	margin: auto;
 	font-family: 'Roboto', sans-serif;
-	font-weight: 700;
-	display:flex;
-	justify-content: space-between;
-} */
-
-/* .resultat_inner div{
-	width: 50%;
-	padding: 10px 0;
+	font-weight: 500;
+	padding: 10px;
 	display: flex;
-	align-items: center;
 	justify-content: center;
-} */
+}
+
+.resultat_inner div{
+	display: flex;
+	flex-wrap: wrap;
+}
 
 .nombre{
 	display: flex;
 	flex-direction: row;
 	width: 100%;
 	text-align: center;
-	font-weight: 700;
+	font-weight: 500;
+	justify-content: center;
+	align-items: center;
 }
 
 .total{
 	display: block;
-	position: relative;
 	font-size: 2em;
 	padding-left: 10px; 
 	padding-right: 10px;
@@ -345,6 +347,15 @@ main{
 
 @media(min-width: 768px){
 	.resultat_inner{
-		width: 50%;
+		width: 80%;
 	}
 }
+
+
+/* 
+
+cerulean rgb(8, 124, 167);
+cyan rgb(5, 178, 220);
+foncé rgb(8, 61, 119); 
+
+*/
