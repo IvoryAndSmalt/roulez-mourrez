@@ -4,8 +4,8 @@ header('Content-Type: application/json');
 
 $host = "localhost";
 $dbname = "roulez-mourrez;charset=utf8";
-$user = "phpmyadmin";
-$pass = "test";
+$user = "root";
+$pass = "Lolorainbow!";
 
 $dbh = new PDO('mysql:host='. $host .';dbname='. $dbname, $user, $pass);
 $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);

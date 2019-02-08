@@ -42,7 +42,7 @@ function getRes($arg1 = "vehicules_categorie_v@%", $arg2 = "vehicules_categorie_
 
     $sql = 'SELECT count(*) as total FROM 
     caracteristiques, lieux, usagers, vehicules WHERE
-    caracteristiques.numa = lieux.numa AND 
+    caracteristiques.numa = lieux.numa AND  slice()
     caracteristiques.numa = usagers.numa AND 
     caracteristiques.numa = vehicules.numa AND 
     lieux.numa = usagers.numa AND 

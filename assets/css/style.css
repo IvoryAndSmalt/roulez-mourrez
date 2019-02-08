@@ -39,7 +39,6 @@
 /******* HEADER ******/
 header{
     background-color: rgb(0, 43, 54);
-    background-size: cover;
 	width: 99%;
 	margin: 0.5% auto;
 	border-radius: 5px 5px 5px 5px;
@@ -51,16 +50,11 @@ header{
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
-#logo img{
-	width: 30%;
-	height: auto;
-}
-
 /* ==================== NAVIGATION =============== */
 
 .navigation {
     max-width: 100%;
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 .menu {
@@ -69,12 +63,19 @@ header{
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
     
 }
+.navigation li {
+	display: flex;
+	justify-content: center;
+	align-items:  center;
+}
 
 .navigation ul li a {
     display: flex;
-	height: 100%;
+	height: 50px;
+	/* margin-top: 48px; */
 	align-self: center;
 	justify-content: center;
+	/* border: solid 1px rgb(4, 39, 47); */
 }
 
 .boutonEnvoyer{
@@ -101,7 +102,7 @@ header{
 	border-radius: 5px;
 	left: 0;
 	color: white;
-	background: black;
+	background-color: black;
 	padding-bottom: 15px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	width: 99%;
@@ -191,18 +192,21 @@ main{
     font-size: 1em;
 }
 
+
 /* =========== SECTION RESULTAT ============= */
 
 .container_resultat{
 	width: 99%;
-	background: lightgray;
+	height: 50px;
+	background: black;
 	margin: 0 auto 0.5% auto;
 	border-radius: 5px;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	box-shadow: 0 1px 3px rgba(37, 37, 37, 0.849), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .resultat_inner{
 	width: 100%;
+	height: 50px;
 	margin: auto;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 700;
@@ -220,7 +224,7 @@ main{
 
 .nombre{
 	/* background: darkgrey; */
-	background-color: rgb(181, 137, 0);
+	background-color: #002B36;
 }
 
 .nombre p{
@@ -229,8 +233,9 @@ main{
 
 .comments{
 	text-align: center;
-	background: ivory;
+	background: #002B36;
 	flex-direction: column;
+	color: white;
 }
 
 .comments *{
@@ -258,11 +263,12 @@ main{
 
 .map--image svg {
     width: 100%;
-    height: 600px;
+    height: 500px;
 }
 
 .map--image path{
-    fill: rgb(151, 205, 226);
+	/* fill: rgb(151, 205, 226); */
+	fill: lightgray;
     stroke: #FFF; /*Permet de séparer les départements*/
     stroke-width: 1px;
     transition: fill 0.3s;
@@ -274,8 +280,65 @@ main{
 
 
 .map--list{
-	height: 600px;
+	height: 450px;
 }
+
+::-webkit-scrollbar {									/* Scrollbars */
+	width: 14px;
+	height: 14px;
+	background: rgb(0, 43, 54); url(images/bg-blog-repeat.png) 0 0 repeat;
+}
+
+::-webkit-scrollbar-track-piece {						/* Fond */
+	background: transparent none;
+	border: solid 4px transparent;
+	border-right-width: 8px;
+	margin: 4px;
+	-webkit-box-shadow: (inset 1px 1px 0 0 rgb(0, 43, 54), inset -1px -1px 0 0 rgb(0, 43, 54));
+}
+::-webkit-scrollbar-track-piece:horizontal {			/* Fond pour la barre du bas */
+	border-right-width: 4px;
+	border-bottom-width: 8px;
+}
+
+::-webkit-scrollbar-thumb {								/* Barre */
+	border: solid 0 transparent;
+	border-right-width: 4px;
+	-webkit-border-radius: 5px;
+	-webkit-border-top-right-radius: 9px 5px;
+	-webkit-border-bottom-right-radius: 9px 5px;
+	-webkit-box-shadow: inset 0 0 0 1px rgb(79,79,79), inset 0 0 0 6px rgb(102,102,102);
+}
+::-webkit-scrollbar-thumb:hover {						/* Barre */
+	-webkit-box-shadow: inset 0 0 0 1px rgb(90,90,90), inset 0 0 0 6px rgb(110,110,110);
+}
+::-webkit-scrollbar-thumb:horizontal {					/* Barre du bas */
+	border-right-width: 0;
+	border-bottom-width: 4px;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px 9px;
+	-webkit-border-bottom-left-radius: 5px 9px;
+}
+
+::-webkit-scrollbar-button {							/* Boutons */
+	height: 26px;
+	background: url(images/webkit-arrows-vert.png) 1px 50% no-repeat, #bfb6a3 url(images/bg-blog-repeat.png) 0 0 no-repeat;
+}
+::-webkit-scrollbar-button:increment {					/* Bouton pour descendre */
+	background-position: -19px 50%;
+}
+::-webkit-scrollbar-button:horizontal {					/* Boutons horizontaux */
+	width: 26px;
+	background: url(images/webkit-arrows-horiz.png) 50% 1px no-repeat, #bfb6a3 url(images/bg-blog-repeat.png) 0 0 no-repeat;
+}
+::-webkit-scrollbar-button:horizontal:increment {		/* Bouton pour aller à droite */
+	background-position: 50% -19px;
+}
+
+
+
+
+
 
 .map--list a{
 	color:rgb(6, 42, 56);
