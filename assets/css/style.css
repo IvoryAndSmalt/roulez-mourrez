@@ -232,10 +232,10 @@ main{
 
 .total{
 	display: block;
-	position: absolute;
+	position: relative;
 	font-size: 2em;
-	padding-left: 2px; 
-	padding-right: 2px;
+	padding-left: 10px; 
+	padding-right: 10px;
 }
 
 /* .comments{
