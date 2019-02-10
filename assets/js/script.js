@@ -222,7 +222,7 @@ blocCouleur[2].style.background = "rgb(8, 124, 167)";
 blocCouleur[3].style.background = "rgb(8, 61, 119)";
 
 function rempliCarte(pourcent, dep, median, qone, qthree) {
-
+    
     for (let i = 0; i < pourcent.length; i++) {
         criteres[0].innerHTML = "< "+pourcent[qone]+"%";
         criteres[1].innerHTML = "de "+pourcent[qone]+"% à "+pourcent[median]+"%";
